@@ -14,94 +14,114 @@
   let initialized = false;
   let myTabular: Tabular | null = null;
   let selectedChannel = 'Speed';
+  let displayedFeatureByKey: Record<string, number> = {};
   const channelOptions = [
     'Speed',
     'Throttle',
     'RPM',
     'nGear',
     'DRS',
-    'Distance',
-    'X',
-    'Y',
-    'Z'
+    'Distance'
   ];
   const sortingFeatures: Array<{
     key: string;
     label: string;
-    value: number;
     step: number;
   }> = [
-    { key: 'n_elements', label: 'Array length', value: 370, step: 1 },
-    { key: 'length_norm', label: 'Length norm', value: 0.0202, step: 0.0001 },
+    { key: 'n_elements', label: 'Array length', step: 1 },
+    { key: 'length_norm', label: 'Length norm', step: 0.0001 },
     {
       key: 'adj_sorted_ratio',
       label: 'Adjacent sorted ratio',
-      value: 0.7263,
       step: 0.0001
     },
     {
       key: 'duplicate_ratio',
       label: 'Duplicate ratio',
-      value: 0.4919,
       step: 0.0001
     },
     {
       key: 'dispersion_ratio',
       label: 'Dispersion ratio',
-      value: 0.2795,
       step: 0.0001
     },
-    { key: 'runs_ratio', label: 'Runs ratio', value: 0.0514, step: 0.0001 },
+    { key: 'runs_ratio', label: 'Runs ratio', step: 0.0001 },
     {
       key: 'inversion_ratio',
       label: 'Inversion ratio',
-      value: 0.4532,
       step: 0.0001
     },
     {
       key: 'entropy_ratio',
       label: 'Entropy ratio',
-      value: 0.9322,
       step: 0.0001
     },
-    { key: 'skewness_t', label: 'Skewness', value: -0.4953, step: 0.0001 },
+    { key: 'skewness_t', label: 'Skewness', step: 0.0001 },
     {
       key: 'kurtosis_excess_t',
       label: 'Kurtosis excess',
-      value: -0.4857,
       step: 0.0001
     },
     {
       key: 'longest_run_ratio',
       label: 'Longest run ratio',
-      value: 0.1514,
       step: 0.0001
     },
-    { key: 'iqr_norm', label: 'IQR norm', value: 0.4604, step: 0.0001 },
-    { key: 'mad_norm', label: 'MAD norm', value: 0.2245, step: 0.0001 },
+    { key: 'iqr_norm', label: 'IQR norm', step: 0.0001 },
+    { key: 'mad_norm', label: 'MAD norm', step: 0.0001 },
     {
       key: 'top1_freq_ratio',
       label: 'Top-1 frequency',
-      value: 0.0189,
       step: 0.0001
     },
     {
       key: 'top5_freq_ratio',
       label: 'Top-5 frequency',
-      value: 0.0865,
       step: 0.0001
     },
-    { key: 'outlier_ratio', label: 'Outlier ratio', value: 0.0, step: 0.0001 },
+    { key: 'outlier_ratio', label: 'Outlier ratio', step: 0.0001 },
     {
       key: 'mean_abs_diff_norm',
       label: 'Mean absolute diff',
-      value: 0.0194,
       step: 0.0001
     }
   ];
 
   const benefits = ['Channel', 'Prediction', 'VBS/SBS'];
   let shownBenefits: string[] = [];
+  const visibleSortingFeatures = () =>
+    sortingFeatures.filter((f) => f.key !== 'outlier_ratio');
+  const formatFeatureValue = (key: string, value: number): number => {
+    if (!Number.isFinite(value)) return 0;
+    if (key === 'n_elements') return Math.round(value);
+    return Math.round(value * 100) / 100;
+  };
+  const refreshDisplayedFeatures = () => {
+    if (!myTabular || !myTabular.data) return;
+    const names = myTabular.data.featureNames || [];
+    const vals =
+      myTabular.featureValues && myTabular.featureValues.length > 0
+        ? myTabular.featureValues
+        : myTabular.curX || [];
+    const next: Record<string, number> = {};
+    for (let i = 0; i < names.length; i++) {
+      next[names[i]] = Number.isFinite(vals[i]) ? Number(vals[i]) : 0;
+    }
+    displayedFeatureByKey = next;
+  };
+  const onFeatureChange = (key: string, event: Event) => {
+    if (!myTabular) return;
+    const input = event.currentTarget as HTMLInputElement | null;
+    if (!input) return;
+    const names = myTabular.data?.featureNames || [];
+    const idx = names.indexOf(key);
+    if (idx < 0) return;
+    myTabular.setFeatureValue(
+      idx,
+      Number(input.value)
+    );
+    refreshDisplayedFeatures();
+  };
 
   onMount(() => {
     mounted = true;
@@ -117,6 +137,7 @@
 
   const tabularUpdated = () => {
     myTabular = myTabular;
+    refreshDisplayedFeatures();
   };
 
   const predFormatter = d3.format('.2%');
@@ -179,24 +200,22 @@
       </div>
 
       <div class="feature-section">
-        <span class="feature-header cont">Continuous Features</span>
+        <span class="feature-header cont">Extracted Features</span>
         <div class="content-cont">
-          {#each sortingFeatures as item}
+          {#each visibleSortingFeatures() as item}
             <div class="input-wrapper">
               <span class="name">{item.label}</span>
               <input
                 class="feature-input"
                 type="number"
                 step="{item.step}"
-                bind:value="{item.value}"
-                on:change="{() => {
-                  if (myTabular) {
-                    myTabular.setFeatureValue(
-                      sortingFeatures.findIndex((f) => f.key === item.key),
-                      Number(item.value)
-                    );
-                  }
-                }}"
+                value="{formatFeatureValue(
+                  item.key,
+                  Number.isFinite(displayedFeatureByKey[item.key])
+                    ? displayedFeatureByKey[item.key]
+                    : 0
+                )}"
+                on:change="{(e) => onFeatureChange(item.key, e)}"
               />
             </div>
           {/each}
