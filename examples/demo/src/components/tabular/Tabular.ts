@@ -1,5 +1,4 @@
 import d3 from '../../utils/d3-import';
-import { config } from '../../config/config';
 import { tick } from 'svelte';
 import type {
   TabularData,
@@ -10,14 +9,10 @@ import type {
   SHAPRow,
   TabularWorkerMessage
 } from '../../types/common-types';
-import { round, timeit, downloadJSON } from '../../utils/utils';
 import { getLatoTextWidth } from '../../utils/text-width';
 import TabularWorker from './tabular-worker?worker';
 
-const DEBUG = config.debug;
 const LCG = d3.randomLcg(0.20230101);
-const RANDOM_INT = d3.randomInt.source(LCG);
-const RANDOM_UNIFORM = d3.randomUniform.source(LCG);
 
 // SVG constants
 const GAP = 20;
@@ -771,16 +766,6 @@ export class Tabular {
    */
   sampleClicked = () => {
     this.loadRandomSample();
-
-    // Predict this example
-    this.getNewExplanation();
-  };
-
-  /**
-   * Event handler for the sample button clicking.
-   */
-  inputChanged = () => {
-    this.curX = this.getCurX();
 
     // Predict this example
     this.getNewExplanation();

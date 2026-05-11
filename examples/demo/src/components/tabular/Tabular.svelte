@@ -1,7 +1,6 @@
 <script lang="ts">
-  import d3 from '../../utils/d3-import';
-  import { fade, blur, fly, slide, scale } from 'svelte/transition';
-  import { Tabular } from './Tabular';
+import d3 from '../../utils/d3-import';
+import { Tabular } from './Tabular';
   import { onMount } from 'svelte';
   import iconBox from '../../imgs/icon-box.svg?raw';
   import iconRefresh from '../../imgs/icon-refresh2.svg?raw';
