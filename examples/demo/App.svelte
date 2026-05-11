@@ -1,6 +1,5 @@
 <script lang="ts">
-  // import WebShap from './src/components/webshap/WebShap.svelte';
-  import Article from './src/components/article/Article.svelte';
+  import WebShap from './src/components/webshap/WebShap.svelte';
 </script>
 
 <style></style>
@@ -15,5 +14,5 @@
 </svelte:head>
 
 <div class="stand-alone-page">
-  <Article />
+  <WebShap />
 </div>

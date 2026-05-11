@@ -7,6 +7,7 @@ import { Tabular } from './Tabular';
   import iconCheck from '../../imgs/icon-check.svg?raw';
   import iconCross from '../../imgs/icon-cross.svg?raw';
   import iconOpen from '../../imgs/icon-open.svg?raw';
+  export let mode: 'f1_routed' | 'v5_global' = 'f1_routed';
 
   let component: HTMLElement | null = null;
   let mounted = false;
@@ -88,8 +89,29 @@ import { Tabular } from './Tabular';
 
   const benefits = ['Channel', 'Prediction', 'VBS/SBS'];
   let shownBenefits: string[] = [];
-  const visibleSortingFeatures = () =>
-    sortingFeatures.filter((f) => f.key !== 'outlier_ratio');
+  const sortingFeatureMap: Record<string, { key: string; label: string; step: number }> =
+    Object.fromEntries(sortingFeatures.map((f) => [f.key, f]));
+  const visibleSortingFeatures = () => {
+    const baseKeys = myTabular?.data?.featureNames || sortingFeatures.map((f) => f.key);
+    const keys =
+      mode === 'v5_global'
+        ? ['n_elements', ...baseKeys.filter((k) => k !== 'n_elements')]
+        : baseKeys;
+    return keys
+      .filter((k) => {
+        if (k === 'outlier_ratio') return false;
+        return true;
+      })
+      .map((k) => {
+        const fromModel = myTabular?.contFeatures?.get(k);
+        const fromStatic = sortingFeatureMap[k];
+        return {
+          key: k,
+          label: fromModel?.displayName || fromStatic?.label || k,
+          step: fromStatic?.step || 0.0001
+        };
+      });
+  };
   const formatFeatureValue = (key: string, value: number): number => {
     if (!Number.isFinite(value)) return 0;
     if (key === 'n_elements') return Math.round(value);
@@ -136,6 +158,7 @@ import { Tabular } from './Tabular';
 
   const tabularUpdated = () => {
     myTabular = myTabular;
+    selectedChannel = myTabular?.selectedChannel || selectedChannel;
     refreshDisplayedFeatures();
   };
 
@@ -148,8 +171,10 @@ import { Tabular } from './Tabular';
     initialized = true;
 
     if (component) {
-      myTabular = new Tabular({ component, tabularUpdated });
-      myTabular.setChannel(selectedChannel);
+      myTabular = new Tabular({ component, tabularUpdated, mode });
+      if (mode === 'f1_routed') {
+        myTabular.setChannel(selectedChannel);
+      }
     }
   };
 
@@ -165,7 +190,11 @@ import { Tabular } from './Tabular';
     <div class="top-section feature">
       <span class="section-name">Input Data</span>
       <span class="section-description"
-        >F1 {selectedChannel} row #{String(myTabular ? myTabular.curIndex : 0).padStart(3, '0')} info
+        >{#if mode === 'f1_routed'}
+          F1 {selectedChannel} row #{String(myTabular ? myTabular.curIndex : 0).padStart(3, '0')} info
+        {:else}
+          V5 {myTabular?.currentExample?.domain || 'global'} row #{String(myTabular ? myTabular.curIndex : 0).padStart(3, '0')} info
+        {/if}
       </span>
       <div
         class="svg-icon rect-button"
@@ -177,31 +206,46 @@ import { Tabular } from './Tabular';
       </div>
     </div>
 
-    <div class="feature-box">
-      <div class="feature-section">
+    <div class="feature-box" class:v5-mode="{mode === 'v5_global'}">
+      <div class="feature-section feature-flag-section">
         <span class="feature-header cat">Feature Flag</span>
         <div class="content-cat">
-          <div class="input-wrapper">
-            <span class="name">Channel</span>
-            <select
-              class="feature-select"
-              bind:value="{selectedChannel}"
-              on:change="{() => {
-                if (myTabular) myTabular.setChannel(selectedChannel);
-              }}"
-            >
-              {#each channelOptions as channel}
-                <option value="{channel}">{channel}</option>
-              {/each}
-            </select>
-          </div>
+          {#if mode === 'f1_routed'}
+            <div class="input-wrapper">
+              <span class="name">Channel</span>
+              <select
+                class="feature-select"
+                bind:value="{selectedChannel}"
+                on:change="{() => {
+                  if (myTabular) myTabular.setChannel(selectedChannel);
+                }}"
+              >
+                {#each channelOptions as channel}
+                  <option value="{channel}">{channel}</option>
+                {/each}
+              </select>
+            </div>
+          {:else}
+            <div class="input-wrapper">
+              <span class="name">Scope</span>
+              <input class="feature-input" value="Global V5" readonly />
+            </div>
+            <div class="input-wrapper">
+              <span class="name">Domain</span>
+              <input
+                class="feature-input"
+                value="{myTabular?.currentExample?.domain || '--'}"
+                readonly
+              />
+            </div>
+          {/if}
         </div>
       </div>
 
       <div class="feature-section">
         <span class="feature-header cont">Extracted Features</span>
         <div class="content-cont">
-          {#each visibleSortingFeatures() as item}
+          {#each visibleSortingFeatures() as item (item.key)}
             <div class="input-wrapper">
               <span class="name">{item.label}</span>
               <input
@@ -210,10 +254,13 @@ import { Tabular } from './Tabular';
                 step="{item.step}"
                 value="{formatFeatureValue(
                   item.key,
-                  Number.isFinite(displayedFeatureByKey[item.key])
-                    ? displayedFeatureByKey[item.key]
-                    : 0
+                  item.key === 'n_elements' && mode === 'v5_global'
+                    ? Number(myTabular?.currentExample?.n_elements ?? 0)
+                    : Number.isFinite(displayedFeatureByKey[item.key])
+                      ? displayedFeatureByKey[item.key]
+                      : 0
                 )}"
+                readonly="{item.key === 'n_elements'}"
                 on:change="{(e) => onFeatureChange(item.key, e)}"
               />
             </div>
@@ -343,3 +390,4 @@ import { Tabular } from './Tabular';
     </div>
   </div>
 </div>
+  export let mode: 'f1_routed' | 'v5_global' = 'f1_routed';

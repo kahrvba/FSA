@@ -139,6 +139,17 @@ $arrow-color: $gray-300;
     flex-direction: column;
     flex-grow: 1;
   }
+
+  &.v5-mode {
+    .feature-flag-section {
+      flex-grow: 0;
+    }
+
+    .content-cat {
+      flex-grow: 0;
+      gap: 6px;
+    }
+  }
 }
 
 .loader-container {

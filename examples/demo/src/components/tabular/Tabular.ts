@@ -39,6 +39,46 @@ type RowExample = {
   x: number[];
   supportedLabels: string[];
   timesSec?: Record<string, number>;
+  domain?: string;
+  id?: string;
+  n_elements?: number;
+};
+
+type F1ChannelConfig = {
+  model: string;
+  classes: string[];
+  rows: number;
+  runtimeMetrics?: ChannelRuntimeMetrics | null;
+  backgroundData?: number[][];
+  examples: Array<RowExample>;
+};
+
+type SortingF1Config = {
+  defaultChannel?: string;
+  featureNames: string[];
+  featureInfo: Record<string, {
+    displayName: string;
+    description: string;
+    group?: string;
+    requiresInt?: boolean;
+  }>;
+  channels: Record<string, F1ChannelConfig>;
+};
+
+type SortingV5Config = {
+  mode: 'v5_global';
+  featureOrder: string[];
+  featureInfo: Record<string, {
+    displayName: string;
+    description: string;
+    group?: string;
+    requiresInt?: boolean;
+  }>;
+  classLabels: string[];
+  model: string;
+  runtimeMetrics?: ChannelRuntimeMetrics | null;
+  backgroundData: number[][];
+  rows: Array<RowExample>;
 };
 
 /**
@@ -46,6 +86,7 @@ type RowExample = {
  */
 
 export class Tabular {
+  mode: 'f1_routed' | 'v5_global';
   component: HTMLElement;
   tabularUpdated: () => void;
   tabularWorker: Worker;
@@ -81,7 +122,7 @@ export class Tabular {
   // WebSHAP data
   backgroundData: number[][] = [];
   curShapValues: number[] | null = null;
-  sortingConfig: any = null;
+  sortingConfig: SortingF1Config | SortingV5Config | null = null;
   selectedChannel = 'Speed';
   featureValues: number[] = [];
   modelReady = false;
@@ -103,11 +144,14 @@ export class Tabular {
    */
   constructor({
     component,
-    tabularUpdated
+    tabularUpdated,
+    mode
   }: {
     component: HTMLElement;
     tabularUpdated: () => void;
+    mode: 'f1_routed' | 'v5_global';
   }) {
+    this.mode = mode;
     this.component = component;
     this.tabularUpdated = tabularUpdated;
 
@@ -167,6 +211,10 @@ export class Tabular {
         circleLoader.classList.add('hidden');
       }
     }
+  };
+
+  destroy = () => {
+    this.tabularWorker.terminate();
   };
 
   /**
@@ -307,22 +355,33 @@ export class Tabular {
   };
 
   getRuntimeMetricRows = (): SHAPRow[] => {
-    if (!this.currentRuntimeMetrics) return [];
-    const m = this.currentRuntimeMetrics;
     const ex = this.currentExample;
     const predLabel = this.curPredLabel;
     const rowTimes = ex?.timesSec || {};
-    const hasRowTimes = predLabel && Number.isFinite(rowTimes[predLabel]);
+    const m = this.currentRuntimeMetrics;
 
-    const sbsAlgo = m.sbs_algorithm;
-    const selectedTime = hasRowTimes ? Number(rowTimes[predLabel]) : m.t_selector_sec;
-    const sbsTime = Number.isFinite(rowTimes[sbsAlgo])
-      ? Number(rowTimes[sbsAlgo])
-      : m.t_sbs_sec;
-    const vbsTimeCandidates = Object.values(rowTimes).filter((v) => Number.isFinite(v));
-    const vbsTime = vbsTimeCandidates.length > 0
-      ? Math.min(...vbsTimeCandidates)
-      : m.t_vbs_sec;
+    const labelsFromRow = Object.keys(rowTimes).filter((k) =>
+      Number.isFinite(rowTimes[k])
+    );
+    const sbsAlgoFromMetrics = m?.sbs_algorithm || null;
+
+    const selectedTimeFromRow =
+      predLabel && Number.isFinite(rowTimes[predLabel])
+        ? Number(rowTimes[predLabel])
+        : null;
+    const sbsTimeFromRow =
+      sbsAlgoFromMetrics && Number.isFinite(rowTimes[sbsAlgoFromMetrics])
+        ? Number(rowTimes[sbsAlgoFromMetrics])
+        : null;
+    const vbsTimeFromRow =
+      labelsFromRow.length > 0
+        ? Math.min(...labelsFromRow.map((k) => Number(rowTimes[k])))
+        : null;
+
+    const selectedTime =
+      selectedTimeFromRow ?? m?.t_selector_sec ?? 0;
+    const sbsTime = sbsTimeFromRow ?? m?.t_sbs_sec ?? selectedTime;
+    const vbsTime = vbsTimeFromRow ?? m?.t_vbs_sec ?? sbsTime;
 
     const speedupVsSbs = sbsTime > 0 ? (sbsTime - selectedTime) / sbsTime : 0;
     const regretVsVbsSec = selectedTime - vbsTime;
@@ -781,10 +840,18 @@ export class Tabular {
    * Load the lending club dataset.
    */
   initData = async () => {
-    this.sortingConfig = await d3.json(
-      `${import.meta.env.BASE_URL}data/sorting-f1.json`
-    );
-    const featureNames = this.sortingConfig.featureNames as string[];
+    const dataFile =
+      this.mode === 'v5_global'
+        ? 'data/sorting-v5.json'
+        : 'data/sorting-f1.json';
+    this.sortingConfig = (await d3.json(
+      `${import.meta.env.BASE_URL}${dataFile}`
+    )) as SortingF1Config | SortingV5Config;
+
+    const featureNames =
+      this.mode === 'v5_global'
+        ? (this.sortingConfig as SortingV5Config).featureOrder
+        : (this.sortingConfig as SortingF1Config).featureNames;
 
     const featureInfo: Record<string, [string, string]> = {};
     for (const name of featureNames) {
@@ -819,7 +886,28 @@ export class Tabular {
     }
     this.catFeatures = new Map();
 
-    this.selectedChannel = this.sortingConfig.defaultChannel || 'Speed';
+    if (this.mode === 'v5_global') {
+      const v5 = this.sortingConfig as SortingV5Config;
+      this.selectedChannel = 'Global';
+      this.curClassLabels = v5.classLabels.slice();
+      this.backgroundData = v5.backgroundData || [];
+      this.currentRuntimeMetrics = v5.runtimeMetrics || null;
+      const modelUrl = `${import.meta.env.BASE_URL}${v5.model}`;
+      this.modelReady = false;
+      this.pendingInference = false;
+      this.loadRequestId += 1;
+      const loadMsg: TabularWorkerMessage = {
+        command: 'startLoadModel',
+        payload: { url: modelUrl, requestId: this.loadRequestId }
+      };
+      this.updateModelLoader(true, true);
+      this.tabularWorker.postMessage(loadMsg);
+      this.loadRandomSample();
+      this.getNewExplanation();
+      return;
+    }
+
+    this.selectedChannel = (this.sortingConfig as SortingF1Config).defaultChannel || 'Speed';
     this.setChannel(this.selectedChannel);
   };
 
@@ -831,8 +919,11 @@ export class Tabular {
       throw Error('this.data is null');
     }
 
-    const examples = this.sortingConfig.channels[this.selectedChannel]
-      .examples as Array<RowExample>;
+    const examples =
+      this.mode === 'v5_global'
+        ? ((this.sortingConfig as SortingV5Config).rows as Array<RowExample>)
+        : ((this.sortingConfig as SortingF1Config).channels[this.selectedChannel]
+            .examples as Array<RowExample>);
     const randomIndex = d3.randomInt(examples.length)();
     const ex = examples[randomIndex];
     this.currentExample = ex;
@@ -915,14 +1006,16 @@ export class Tabular {
 
   setChannel = (channel: string) => {
     if (this.sortingConfig === null) return;
-    if (!this.sortingConfig.channels[channel]) return;
+    if (this.mode === 'v5_global') return;
+    const f1 = this.sortingConfig as SortingF1Config;
+    if (!f1.channels[channel]) return;
     this.selectedChannel = channel;
-    this.curClassLabels = (this.sortingConfig.channels[channel].classes ||
+    this.curClassLabels = (f1.channels[channel].classes ||
       []) as string[];
     this.currentRuntimeMetrics =
-      this.sortingConfig.channels[channel].runtimeMetrics || null;
+      f1.channels[channel].runtimeMetrics || null;
 
-    const modelRel = this.sortingConfig.channels[channel].model as string;
+    const modelRel = f1.channels[channel].model as string;
     const modelUrl = `${import.meta.env.BASE_URL}${modelRel}`;
     this.modelReady = false;
     this.pendingInference = false;
@@ -934,8 +1027,7 @@ export class Tabular {
     this.updateModelLoader(true, true);
     this.tabularWorker.postMessage(loadMsg);
 
-    this.backgroundData =
-      this.sortingConfig.channels[channel].backgroundData || [];
+    this.backgroundData = f1.channels[channel].backgroundData || [];
     this.loadRandomSample();
     this.getNewExplanation();
   };

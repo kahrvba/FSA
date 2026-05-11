@@ -1,0 +1,1295 @@
+{
+  "mode": "v5_global",
+  "featureOrder": [
+    "length_norm",
+    "adj_sorted_ratio",
+    "duplicate_ratio",
+    "dispersion_ratio",
+    "runs_ratio",
+    "inversion_ratio",
+    "entropy_ratio",
+    "skewness_t",
+    "kurtosis_excess_t",
+    "longest_run_ratio",
+    "iqr_norm",
+    "mad_norm",
+    "top1_freq_ratio",
+    "top5_freq_ratio",
+    "outlier_ratio",
+    "mean_abs_diff_norm"
+  ],
+  "featureInfo": {
+    "length_norm": {
+      "displayName": "Length norm",
+      "description": "size",
+      "group": "size",
+      "requiresInt": false
+    },
+    "adj_sorted_ratio": {
+      "displayName": "Adjacent sorted ratio",
+      "description": "ordering",
+      "group": "ordering",
+      "requiresInt": false
+    },
+    "duplicate_ratio": {
+      "displayName": "Duplicate ratio",
+      "description": "repetition",
+      "group": "repetition",
+      "requiresInt": false
+    },
+    "dispersion_ratio": {
+      "displayName": "Dispersion ratio",
+      "description": "distribution",
+      "group": "distribution",
+      "requiresInt": false
+    },
+    "runs_ratio": {
+      "displayName": "Runs ratio",
+      "description": "ordering",
+      "group": "ordering",
+      "requiresInt": false
+    },
+    "inversion_ratio": {
+      "displayName": "Inversion ratio",
+      "description": "ordering",
+      "group": "ordering",
+      "requiresInt": false
+    },
+    "entropy_ratio": {
+      "displayName": "Entropy ratio",
+      "description": "distribution",
+      "group": "distribution",
+      "requiresInt": false
+    },
+    "skewness_t": {
+      "displayName": "Skewness",
+      "description": "distribution",
+      "group": "distribution",
+      "requiresInt": false
+    },
+    "kurtosis_excess_t": {
+      "displayName": "Kurtosis excess",
+      "description": "distribution",
+      "group": "distribution",
+      "requiresInt": false
+    },
+    "longest_run_ratio": {
+      "displayName": "Longest run ratio",
+      "description": "ordering",
+      "group": "ordering",
+      "requiresInt": false
+    },
+    "iqr_norm": {
+      "displayName": "IQR norm",
+      "description": "robust scale",
+      "group": "robust scale",
+      "requiresInt": false
+    },
+    "mad_norm": {
+      "displayName": "MAD norm",
+      "description": "robust scale",
+      "group": "robust scale",
+      "requiresInt": false
+    },
+    "top1_freq_ratio": {
+      "displayName": "Top-1 frequency",
+      "description": "repetition",
+      "group": "repetition",
+      "requiresInt": false
+    },
+    "top5_freq_ratio": {
+      "displayName": "Top-5 frequency",
+      "description": "repetition",
+      "group": "repetition",
+      "requiresInt": false
+    },
+    "outlier_ratio": {
+      "displayName": "Outlier ratio",
+      "description": "distribution",
+      "group": "distribution",
+      "requiresInt": false
+    },
+    "mean_abs_diff_norm": {
+      "displayName": "Mean absolute diff",
+      "description": "ordering",
+      "group": "ordering",
+      "requiresInt": false
+    }
+  },
+  "classLabels": [
+    "introsort",
+    "heapsort",
+    "timsort"
+  ],
+  "model": "models/sorting/v5_global.onnx",
+  "runtimeMetrics": {
+    "rows": 70994,
+    "sbs_algorithm": "heapsort",
+    "t_sbs_sec": 6.0842715179427884e-05,
+    "t_vbs_sec": 5.710410919268974e-05
+  },
+  "backgroundData": [
+    [
+      0.0136444618259244,
+      0.5212222815726979,
+      0.0999999999999999,
+      0.1486075792603204,
+      0.6103333333333333,
+      0.4801060080852153,
+      0.6932880975483705,
+      0.39340177167089724,
+      1.5138798941012053,
+      0.0063948840927258,
+      0.1428571428571395,
+      0.0612244897959169,
+      0.0059880239520958,
+      0.0239829081000743,
+      0.0129236071223434,
+      0.0619720563712004
+    ],
+    [
+      0.027537729810190967,
+      0.5990774808492892,
+      0.3929367439768431,
+      0.15457237266103,
+      0.4959552965870642,
+      0.4174226780496474,
+      0.6738974004598102,
+      0.4891814082195004,
+      1.487507915158727,
+      0.03810457299706042,
+      0.18714854706068104,
+      0.08285306292720206,
+      0.09282609409860135,
+      0.22122597642583303,
+      0.012115001600896125,
+      0.10093000544741709
+    ]
+  ],
+  "rows": [
+    {
+      "id": "crypto_ADA-USD_1mo_5m_Volume_SHUF.csv",
+      "file": "crypto_ADA-USD_1mo_5m_Volume_SHUF.csv",
+      "domain": "Crypto",
+      "n_elements": 8062,
+      "trueLabel": "introsort",
+      "x": [
+        0.0437904662582018,
+        0.6243642228011413,
+        0.5264202431158522,
+        0.0333580566658412,
+        0.5834780451500868,
+        0.3662840809061617,
+        0.1119888205425042,
+        2.70963267135665,
+        5.745270655459168,
+        0.001488464400893,
+        0.0087465369267395,
+        0.0,
+        0.5111634830066981,
+        0.5126519474075911,
+        0.0104192508062515,
+        0.0168692532211414
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 7.337500574067235e-05,
+        "heapsort": 7.337500574067235e-05,
+        "timsort": 0.0001121250097639
+      }
+    },
+    {
+      "id": "crypto_BTC-USD_2y_1h_Open_w5000c2_QBIN50.csv",
+      "file": "crypto_BTC-USD_2y_1h_Open_w5000c2_QBIN50.csv",
+      "domain": "Crypto",
+      "n_elements": 5000,
+      "trueLabel": "introsort",
+      "x": [
+        0.0271585625516012,
+        0.8511702340468094,
+        0.9914,
+        0.1708953611746054,
+        0.203,
+        0.3596124024804961,
+        0.8398552356878154,
+        -0.443986819899366,
+        0.3181182794954883,
+        0.013,
+        0.2244897957664019,
+        0.1224489792974036,
+        0.0576,
+        0.2604,
+        0.0086,
+        0.006646227217302
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 3.6750047001987696e-05,
+        "heapsort": 3.791699418798089e-05,
+        "timsort": 3.724999260157347e-05
+      }
+    },
+    {
+      "id": "crypto_ATOM-USD_2y_1h_rolling_20d_mean_SHUF.csv",
+      "file": "crypto_ATOM-USD_2y_1h_rolling_20d_mean_SHUF.csv",
+      "domain": "Crypto",
+      "n_elements": 17346,
+      "trueLabel": "heapsort",
+      "x": [
+        0.0942184852040151,
+        0.5011818968002306,
+        0.0,
+        0.2043995608075134,
+        0.6662054652369422,
+        0.5043611805902951,
+        0.8118271323303927,
+        0.7827332190657017,
+        0.8536462995757146,
+        0.0004035512510088,
+        0.1915760047503148,
+        0.0963481501719921,
+        5.765017871555402e-05,
+        0.0002882508935777,
+        0.0122218378876974,
+        0.2150373489262395
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 0.0003168749972246,
+        "heapsort": 0.0003118750173598,
+        "timsort": 0.0007060409989207
+      }
+    },
+    {
+      "id": "crypto_SOL-USD_2y_1h_log_returns.csv",
+      "file": "crypto_SOL-USD_2y_1h_log_returns.csv",
+      "domain": "Crypto",
+      "n_elements": 17364,
+      "trueLabel": "heapsort",
+      "x": [
+        0.0943162560292008,
+        0.4953061106951563,
+        0.0,
+        0.0353798949703926,
+        0.6634991937341627,
+        0.5030445222611306,
+        0.4211764772071603,
+        -0.2050993634649862,
+        2.7516488378769286,
+        0.0004031329186823,
+        0.0329059325738734,
+        0.0164502867237508,
+        5.759041695461875e-05,
+        0.000287952084773,
+        0.0153190509099285,
+        0.0344215551205792
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 0.000311000039801,
+        "heapsort": 0.0003084999625571,
+        "timsort": 0.0006939169834367
+      }
+    },
+    {
+      "id": "crypto_BNB-USD_10y_1d_Open_w500c1_PSORT10.csv",
+      "file": "crypto_BNB-USD_10y_1d_Open_w500c1_PSORT10.csv",
+      "domain": "Crypto",
+      "n_elements": 500,
+      "trueLabel": "timsort",
+      "x": [
+        0.0027158562551601,
+        0.9018036072144288,
+        0.0,
+        0.2108020830777405,
+        0.186,
+        0.052753507014028,
+        0.8854532524836953,
+        0.6546574926797758,
+        -0.0246733818446397,
+        0.074,
+        0.2366215032598436,
+        0.0988200274236572,
+        0.002,
+        0.01,
+        0.0,
+        0.0348801808475834
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 6.375019438564777e-06,
+        "heapsort": 6.582995411008596e-06,
+        "timsort": 2.1249870769679542e-06
+      }
+    },
+    {
+      "id": "crypto_MATIC-USD_5y_1d_rolling_20d_std_w250c2_PSORT10.csv",
+      "file": "crypto_MATIC-USD_5y_1d_rolling_20d_std_w250c2_PSORT10.csv",
+      "domain": "Crypto",
+      "n_elements": 250,
+      "trueLabel": "timsort",
+      "x": [
+        0.00135792812758,
+        0.9036144578313252,
+        0.0,
+        0.2554865085229582,
+        0.188,
+        0.0648995983935743,
+        0.9367734074791616,
+        0.534831055007894,
+        -0.4595731180408541,
+        0.108,
+        0.3655285720637184,
+        0.1548600291100611,
+        0.004,
+        0.02,
+        0.0,
+        0.0548288584318368
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 3.2919924706220627e-06,
+        "heapsort": 3.00002284348011e-06,
+        "timsort": 1.1249794624745846e-06
+      }
+    },
+    {
+      "id": "crypto_LTC-USD_1mo_5m_log_returns_w2500c0.csv",
+      "file": "crypto_LTC-USD_1mo_5m_log_returns_w2500c0.csv",
+      "domain": "Crypto",
+      "n_elements": 2500,
+      "trueLabel": "heapsort",
+      "x": [
+        0.0135792812758006,
+        0.5066026410564226,
+        0.0,
+        0.0406844454076401,
+        0.6108,
+        0.496200400160064,
+        0.4280997778712503,
+        -1.009907475539047,
+        3.764398850638262,
+        0.0032,
+        0.029618149067523,
+        0.0149614976412061,
+        0.0004,
+        0.002,
+        0.0184,
+        0.0297662661132462
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 4.258297849446535e-05,
+        "heapsort": 3.7334044463932514e-05,
+        "timsort": 4.137505311518907e-05
+      }
+    },
+    {
+      "id": "crypto_ATOM-USD_10y_1d_rolling_20d_std_w250c2_REV.csv",
+      "file": "crypto_ATOM-USD_10y_1d_rolling_20d_std_w250c2_REV.csv",
+      "domain": "Crypto",
+      "n_elements": 250,
+      "trueLabel": "timsort",
+      "x": [
+        0.00135792812758,
+        0.5381526104417671,
+        0.0,
+        0.2032840644477568,
+        0.264,
+        0.6319357429718876,
+        0.6773805913596884,
+        1.2222508524823057,
+        1.9418996076110768,
+        0.064,
+        0.1612472621957555,
+        0.0836024622906616,
+        0.004,
+        0.02,
+        0.04,
+        0.0132591675182788
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 3.04199056699872e-06,
+        "heapsort": 3.0830269679427147e-06,
+        "timsort": 2.207991201430559e-06
+      }
+    },
+    {
+      "id": "quake_global_global_M1plus_20170901_20171231_depth_diff_c3000_2_SHUF.csv",
+      "file": "quake_global_global_M1plus_20170901_20171231_depth_diff_c3000_2_SHUF.csv",
+      "domain": "Earthquake",
+      "n_elements": 2999,
+      "trueLabel": "heapsort",
+      "x": [
+        0.0162897058184504,
+        0.4983322214809873,
+        0.2280760253417806,
+        0.1473733406218737,
+        0.6795598532844281,
+        0.4865119594011879,
+        0.747557298463722,
+        -0.0162536828785299,
+        0.9676497139789404,
+        0.0023341113704568,
+        0.0624249299346054,
+        0.0310956893100225,
+        0.0033344448149383,
+        0.013671223741247,
+        0.0066688896298766,
+        0.1517137151000702
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 5.0916976761072874e-05,
+        "heapsort": 4.5625027269124985e-05,
+        "timsort": 5.9333047829568386e-05
+      }
+    },
+    {
+      "id": "quake_global_global_M1plus_20220101_20220630_longitude_c5000_0_REV.csv",
+      "file": "quake_global_global_M1plus_20220101_20220630_longitude_c5000_0_REV.csv",
+      "domain": "Earthquake",
+      "n_elements": 5000,
+      "trueLabel": "heapsort",
+      "x": [
+        0.0271585625516012,
+        0.5031006201240248,
+        0.0699999999999999,
+        0.0754990423118252,
+        0.6762,
+        0.4846967793558712,
+        0.4297795545660829,
+        1.6644528462145654,
+        3.8300755363257455,
+        0.0014,
+        0.1039977919923066,
+        0.0330881535502662,
+        0.0014,
+        0.0064,
+        0.0026,
+        0.0679008906482854
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 9.33330156840384e-05,
+        "heapsort": 9.162502828985453e-05,
+        "timsort": 0.0001118750078603
+      }
+    },
+    {
+      "id": "quake_california_global_M1plus_20220101_20221231_depth_c5000_1_SHUF.csv",
+      "file": "quake_california_global_M1plus_20220101_20221231_depth_c5000_1_SHUF.csv",
+      "domain": "Earthquake",
+      "n_elements": 5000,
+      "trueLabel": "heapsort",
+      "x": [
+        0.0271585625516012,
+        0.4900980196039208,
+        0.6724,
+        0.0858987687105607,
+        0.6766,
+        0.5035430286057212,
+        0.6689430103773834,
+        0.7529977299908178,
+        1.568460441082632,
+        0.0014,
+        0.1203007518796972,
+        0.0604845446950699,
+        0.0152,
+        0.036,
+        0.0106,
+        0.094836243773398
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 9.27080400288105e-05,
+        "heapsort": 8.62499582581222e-05,
+        "timsort": 0.0001245830208063
+      }
+    },
+    {
+      "id": "quake_global_global_M4plus_20240101_20240630_depth_diff_c3000_1.csv",
+      "file": "quake_global_global_M4plus_20240101_20240630_depth_diff_c3000_1.csv",
+      "domain": "Earthquake",
+      "n_elements": 2999,
+      "trueLabel": "heapsort",
+      "x": [
+        0.0162897058184504,
+        0.604069379586391,
+        0.1593864621540514,
+        0.1545261122276201,
+        0.67189063021007,
+        0.4921491508955287,
+        0.7389131785791296,
+        0.0392533984809188,
+        1.321413104864971,
+        0.0046682227409136,
+        0.0750440543988742,
+        0.0374425914848155,
+        0.13837945981994,
+        0.160053351117039,
+        0.0130043347782594,
+        0.1696414467416647
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 4.329101648181677e-05,
+        "heapsort": 4.170800093561411e-05,
+        "timsort": 5.1332986913621426e-05
+      }
+    },
+    {
+      "id": "quake_global_global_M1plus_20220101_20221231_inter_event_time_c500_2_PSORT10.csv",
+      "file": "quake_global_global_M1plus_20220101_20221231_inter_event_time_c500_2_PSORT10.csv",
+      "domain": "Earthquake",
+      "n_elements": 499,
+      "trueLabel": "timsort",
+      "x": [
+        0.0027104245426498,
+        0.9076305220883534,
+        0.002004008016032,
+        0.1330213744358718,
+        0.1823647294589178,
+        0.0552913055025714,
+        0.6866383278540102,
+        1.1865464693036716,
+        2.1204267387757065,
+        0.0701402805611222,
+        0.1309514400125902,
+        0.0578194344868588,
+        0.0040080160320641,
+        0.0120240480961923,
+        0.0300601202404809,
+        0.023453131251289
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 6.792019121348858e-06,
+        "heapsort": 6.417045369744301e-06,
+        "timsort": 2.1249870769679542e-06
+      }
+    },
+    {
+      "id": "quake_global_global_M1plus_20110301_20110630_longitude_c200_1_QBIN50.csv",
+      "file": "quake_global_global_M1plus_20110301_20110630_longitude_c200_1_QBIN50.csv",
+      "domain": "Earthquake",
+      "n_elements": 200,
+      "trueLabel": "timsort",
+      "x": [
+        0.001086342502064,
+        0.6130653266331658,
+        0.88,
+        0.2478520594504502,
+        0.59,
+        0.3999497487437186,
+        0.6980918823303113,
+        0.2363624062628674,
+        -0.7380803663104046,
+        0.03,
+        0.4693877546890767,
+        0.2551020404118174,
+        0.195,
+        0.65,
+        0.0,
+        0.2754589270487131
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 2.2080494090914726e-06,
+        "heapsort": 2.040993422269821e-06,
+        "timsort": 1.7919810488820076e-06
+      }
+    },
+    {
+      "id": "quake_global_global_M5plus_20050101_20141231_latitude_c500_0_REV.csv",
+      "file": "quake_global_global_M5plus_20050101_20141231_latitude_c500_0_REV.csv",
+      "domain": "Earthquake",
+      "n_elements": 500,
+      "trueLabel": "timsort",
+      "x": [
+        0.0027158562551601,
+        0.4849699398797595,
+        0.038,
+        0.1649665654498627,
+        0.652,
+        0.4799839679358717,
+        0.7448903542470204,
+        -0.2907950404022375,
+        0.8193038979873849,
+        0.012,
+        0.0958457071938293,
+        0.0382777063664432,
+        0.006,
+        0.022,
+        0.002,
+        0.1428728947042013
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 6.499991286545992e-06,
+        "heapsort": 6.375019438564777e-06,
+        "timsort": 5.08397351950407e-06
+      }
+    },
+    {
+      "id": "quake_california_global_M1plus_20200101_20201231_inter_event_time_c5000_0.csv",
+      "file": "quake_california_global_M1plus_20200101_20201231_inter_event_time_c5000_0.csv",
+      "domain": "Earthquake",
+      "n_elements": 4999,
+      "trueLabel": "introsort",
+      "x": [
+        0.0271531308390909,
+        0.5008003201280512,
+        0.0054010802160432,
+        0.1123671803574802,
+        0.6637327465493099,
+        0.5032792072620206,
+        0.6387079463880914,
+        1.1516698102682068,
+        2.046147890423492,
+        0.0014002800560112,
+        0.11541178561606,
+        0.0494207092146421,
+        0.0004000800160032,
+        0.002000400080016,
+        0.0198039607921584,
+        0.1075868934936448
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 7.974996697157621e-05,
+        "heapsort": 8.158298442140222e-05,
+        "timsort": 0.0001288750208914
+      }
+    },
+    {
+      "id": "stock_ADSK_max_1d_pct_change_QBIN50.csv",
+      "file": "stock_ADSK_max_1d_pct_change_QBIN50.csv",
+      "domain": "Stock",
+      "n_elements": 10246,
+      "trueLabel": "heapsort",
+      "x": [
+        0.0556533263807413,
+        0.582723279648609,
+        0.9968768299824322,
+        0.0464970820011319,
+        0.5835447979699395,
+        0.4183356678339169,
+        0.4828771870596936,
+        0.1611486201733337,
+        2.274146029329147,
+        0.0011711887565879,
+        0.061224489798795,
+        0.0204081632695053,
+        0.2441928557485848,
+        0.7991411282451688,
+        0.0137614678899082,
+        0.0456389876591681
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 4.5249995309859514e-05,
+        "heapsort": 4.5082997530698776e-05,
+        "timsort": 0.0001559170195832
+      }
+    },
+    {
+      "id": "stock_TTD_5d_5m_Low_PSORT10.csv",
+      "file": "stock_TTD_5d_5m_Low_PSORT10.csv",
+      "domain": "Stock",
+      "n_elements": 390,
+      "trueLabel": "timsort",
+      "x": [
+        0.0021183678790248,
+        0.9048843187660668,
+        0.3307692307692308,
+        0.1550306322459126,
+        0.1717948717948718,
+        0.0623689934743919,
+        0.7885969304689123,
+        -0.0916322039569438,
+        0.3998532449800029,
+        0.0871794871794871,
+        0.2574669323152549,
+        0.0785397132459409,
+        0.0128205128205128,
+        0.0615384615384615,
+        0.0051282051282051,
+        0.0325751200667671
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 5.999987479299307e-06,
+        "heapsort": 5.833047907799482e-06,
+        "timsort": 2.1249870769679542e-06
+      }
+    },
+    {
+      "id": "stock_ROP_10y_1d_daily_range_QBIN50.csv",
+      "file": "stock_ROP_10y_1d_daily_range_QBIN50.csv",
+      "domain": "Stock",
+      "n_elements": 2513,
+      "trueLabel": "heapsort",
+      "x": [
+        0.0136498935384347,
+        0.5951433121019108,
+        0.9876641464385196,
+        0.0765439166748276,
+        0.5586947871070433,
+        0.2419849901531146,
+        0.5622181544834318,
+        1.3332016349541858,
+        2.964306214325099,
+        0.0035813768404297,
+        0.0816326530680542,
+        0.0408163265340271,
+        0.1436530043772383,
+        0.6331078392359729,
+        0.01591723040191,
+        0.0444153776144738
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 1.3792014215141536e-05,
+        "heapsort": 1.3666984159499409e-05,
+        "timsort": 2.0916981156915423e-05
+      }
+    },
+    {
+      "id": "stock_CL_5y_1d_pct_change_SHUF.csv",
+      "file": "stock_CL_5y_1d_pct_change_SHUF.csv",
+      "domain": "Stock",
+      "n_elements": 1254,
+      "trueLabel": "timsort",
+      "x": [
+        0.0068113674879415,
+        0.5043894652833201,
+        0.0071770334928229,
+        0.1027664208273126,
+        0.6698564593301436,
+        0.5027474730503252,
+        0.7397443622152716,
+        -0.2660254131999677,
+        1.2201279205347393,
+        0.0055821371610845,
+        0.1194955498507002,
+        0.059689294036513,
+        0.0079744816586921,
+        0.011164274322169,
+        0.0143540669856459,
+        0.1152300724909235
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 1.6791047528386116e-05,
+        "heapsort": 1.6874982975423336e-05,
+        "timsort": 1.3082986697554588e-05
+      }
+    },
+    {
+      "id": "stock_ZTS_max_1d_rolling_5d_mean_REV.csv",
+      "file": "stock_ZTS_max_1d_rolling_5d_mean_REV.csv",
+      "domain": "Stock",
+      "n_elements": 3286,
+      "trueLabel": "timsort",
+      "x": [
+        0.0178486073089123,
+        0.4389649923896499,
+        0.0015216068167985,
+        0.2792433857331422,
+        0.2166768107121119,
+        0.8748487888750855,
+        0.8956349097112017,
+        0.0573863018388505,
+        -0.9180177177680602,
+        0.0085209981740718,
+        0.5537703832013007,
+        0.277063337354028,
+        0.0006086427267194,
+        0.003043213633597,
+        0.0,
+        0.0026955660205462
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 5.179201252758503e-05,
+        "heapsort": 5.141698056831956e-05,
+        "timsort": 3.125000512227416e-05
+      }
+    },
+    {
+      "id": "stock_AON_max_1d_daily_range_REV.csv",
+      "file": "stock_AON_max_1d_daily_range_REV.csv",
+      "domain": "Stock",
+      "n_elements": 11531,
+      "trueLabel": "introsort",
+      "x": [
+        0.0626330769565028,
+        0.5111882046834345,
+        0.0496054114994363,
+        0.0618208382900936,
+        0.6490330413667506,
+        0.8785987993996999,
+        0.3134273517485989,
+        1.5485013297089725,
+        3.1551615589579463,
+        0.0007805047263897,
+        0.0310344572669072,
+        0.0114324356210689,
+        0.0006070592316364,
+        0.002861850663429,
+        0.0206400138756395,
+        0.0144105024672947
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 0.0002050419570878,
+        "heapsort": 0.0002076249802485,
+        "timsort": 0.0003326670266687
+      }
+    },
+    {
+      "id": "stock_ADSK_max_1d_pct_change_REV.csv",
+      "file": "stock_ADSK_max_1d_pct_change_REV.csv",
+      "domain": "Stock",
+      "n_elements": 10246,
+      "trueLabel": "heapsort",
+      "x": [
+        0.0556533263807413,
+        0.5159590043923865,
+        0.0607066172164747,
+        0.0452112790840347,
+        0.647960179582276,
+        0.4936228114057028,
+        0.4946619174245641,
+        0.1528505280189117,
+        2.3340357010042143,
+        0.0007807925043919,
+        0.0441462280219731,
+        0.0221331583081609,
+        0.0392348233456958,
+        0.0410892055436267,
+        0.0150302557095451,
+        0.0447371898664636
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 0.0001760419690981,
+        "heapsort": 0.000173749984242,
+        "timsort": 0.0003421249566599
+      }
+    },
+    {
+      "id": "stock_GME_1mo_5m_log_returns_REV.csv",
+      "file": "stock_GME_1mo_5m_log_returns_REV.csv",
+      "domain": "Stock",
+      "n_elements": 1481,
+      "trueLabel": "timsort",
+      "x": [
+        0.0080443662277842,
+        0.5128378378378379,
+        0.0688723835246455,
+        0.0673518160170332,
+        0.6731937879810939,
+        0.5033350365895943,
+        0.5993504316914087,
+        -0.2482235717907929,
+        2.1625288850607696,
+        0.0047265361242403,
+        0.0620246920635178,
+        0.031028995981241,
+        0.0303848750844024,
+        0.038487508440243,
+        0.0141796083727211,
+        0.0684193789291414
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 2.116698306053877e-05,
+        "heapsort": 2.0459003280848265e-05,
+        "timsort": 1.5375029761344194e-05
+      }
+    },
+    {
+      "id": "weather_Jakarta_2019_2020_surface_pressure_PSORT10.csv",
+      "file": "weather_Jakarta_2019_2020_surface_pressure_PSORT10.csv",
+      "domain": "Weather",
+      "n_elements": 17544,
+      "trueLabel": "heapsort",
+      "x": [
+        0.0952939642810585,
+        0.9073134583594596,
+        0.993844049247606,
+        0.145174240649141,
+        0.1511057911536707,
+        0.0674372186093046,
+        0.847769097381984,
+        -0.0925470284136385,
+        -0.2509698269521143,
+        0.0039899680802553,
+        0.2035398230088384,
+        0.0973451327433566,
+        0.0254787961696306,
+        0.1216370269037847,
+        0.0010829913360693,
+        0.0313459872808077
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 0.0001536670024506,
+        "heapsort": 0.0001494999742135,
+        "timsort": 0.0001591249601915
+      }
+    },
+    {
+      "id": "weather_Bangkok_2015_2020_shortwave_radiation_QBIN50.csv",
+      "file": "weather_Bangkok_2015_2020_shortwave_radiation_QBIN50.csv",
+      "domain": "Weather",
+      "n_elements": 52608,
+      "trueLabel": "heapsort",
+      "x": [
+        0.2857515317429279,
+        0.7453570817571806,
+        0.9990495742092458,
+        0.2760285169201595,
+        0.1176627128953771,
+        0.3716928464232116,
+        0.6347799817594802,
+        0.7314607573593433,
+        -0.2446434129898373,
+        0.0004181873479318,
+        0.387755102040816,
+        0.0,
+        0.5166514598540146,
+        0.5833713503649635,
+        0.0,
+        0.0647108730389336
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 0.0002577090053819,
+        "heapsort": 0.0002566250041127,
+        "timsort": 0.0007707090117037
+      }
+    },
+    {
+      "id": "weather_Mumbai_2000_2020_relative_humidity_2m_QBIN50.csv",
+      "file": "weather_Mumbai_2000_2020_relative_humidity_2m_QBIN50.csv",
+      "domain": "Weather",
+      "n_elements": 184104,
+      "trueLabel": "heapsort",
+      "x": [
+        1.0,
+        0.7052139291592207,
+        0.999728414374484,
+        0.2090083589889798,
+        0.182413201234085,
+        0.4624317158579289,
+        0.8706161321370939,
+        -0.5839893873979473,
+        -0.2824045963111656,
+        0.0001629513753096,
+        0.326530612244894,
+        0.1428571428571412,
+        0.088433711380524,
+        0.3393027853821753,
+        0.0008364837265893,
+        0.0342906981861413
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 0.0014828330022282,
+        "heapsort": 0.0014121249550953,
+        "timsort": 0.0039112500380724
+      }
+    },
+    {
+      "id": "weather_Bangkok_2015_2020_precipitation_REV.csv",
+      "file": "weather_Bangkok_2015_2020_precipitation_REV.csv",
+      "domain": "Weather",
+      "n_elements": 52608,
+      "trueLabel": "heapsort",
+      "x": [
+        0.2857515317429279,
+        0.8842359381831315,
+        0.9978330291970804,
+        0.029723855914939,
+        0.1580748175182481,
+        0.2002316158079039,
+        0.0916641670266139,
+        2.3690466482803627,
+        5.005243843956973,
+        0.0093141727493917,
+        0.0,
+        0.0,
+        0.7923319647201946,
+        0.9229014598540146,
+        0.0176779197080291,
+        0.0074455897664769
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 0.0001436250167898,
+        "heapsort": 0.0001432500430382,
+        "timsort": 0.0004357500001788
+      }
+    },
+    {
+      "id": "weather_Manaus_2015_2020_pressure_diff_PSORT10.csv",
+      "file": "weather_Manaus_2015_2020_pressure_diff_PSORT10.csv",
+      "domain": "Weather",
+      "n_elements": 52607,
+      "trueLabel": "introsort",
+      "x": [
+        0.2857461000304176,
+        0.908470516671102,
+        0.9988974851255537,
+        0.1314925531538667,
+        0.150341209344764,
+        0.0693726863431715,
+        0.8088503079921663,
+        -0.2084138012402428,
+        -0.3627834126120363,
+        0.0015587279259414,
+        0.1896551724137604,
+        0.1034482758620511,
+        0.0505826220845134,
+        0.2433896629726082,
+        0.0010835059973007,
+        0.0286203750194959
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 0.0003472499665804,
+        "heapsort": 0.0003577499883249,
+        "timsort": 0.0005243750056251
+      }
+    },
+    {
+      "id": "weather_Singapore_2020_2020_pressure_diff_SHUF.csv",
+      "file": "weather_Singapore_2020_2020_pressure_diff_SHUF.csv",
+      "domain": "Weather",
+      "n_elements": 8783,
+      "trueLabel": "heapsort",
+      "x": [
+        0.0477067309781427,
+        0.5245957640628558,
+        0.99601502903336,
+        0.1844106013122567,
+        0.6523966753956507,
+        0.4800279664917576,
+        0.9082129943071025,
+        -0.0300763750648968,
+        -0.6070289837934575,
+        0.000796994193328,
+        0.294117647058737,
+        0.1470588235293685,
+        0.0561311624729591,
+        0.268245474211545,
+        0.0,
+        0.2106548153307617
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 5.624996265396476e-05,
+        "heapsort": 5.58749889023602e-05,
+        "timsort": 0.00013137498172
+      }
+    },
+    {
+      "id": "weather_Lagos_2000_2020_temperature_2m_SHUF.csv",
+      "file": "weather_Lagos_2000_2020_temperature_2m_SHUF.csv",
+      "domain": "Weather",
+      "n_elements": 184104,
+      "trueLabel": "heapsort",
+      "x": [
+        1.0,
+        0.5086663443833072,
+        0.9992612870985964,
+        0.1186296048177491,
+        0.6589427714769913,
+        0.50888044022011,
+        0.7849321857111519,
+        0.2784908138338541,
+        -0.2100637699098761,
+        4.888541259288228e-05,
+        0.1575342465753317,
+        0.0821917808219121,
+        0.0263818276626254,
+        0.1251303611002477,
+        0.0012873158649459,
+        0.1341973622716614
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 0.0014849579893052,
+        "heapsort": 0.0014775409945286,
+        "timsort": 0.0050433330470696
+      }
+    },
+    {
+      "id": "weather_Manaus_2000_2020_pressure_diff_QBIN50.csv",
+      "file": "weather_Manaus_2000_2020_pressure_diff_QBIN50.csv",
+      "domain": "Weather",
+      "n_elements": 184103,
+      "trueLabel": "introsort",
+      "x": [
+        0.9999945682874896,
+        0.5361430076805249,
+        0.9997284128993008,
+        0.1154780594567393,
+        0.4150285438042834,
+        0.4849034517258629,
+        0.758752687208017,
+        -0.2222849439270416,
+        -0.3538958463758735,
+        5.9749162153794346e-05,
+        0.1632653061224233,
+        0.0816326530612116,
+        0.0902158031102154,
+        0.3958219040428455,
+        0.0010591896927263,
+        0.0721174087390217
+      ],
+      "supportedLabels": [
+        "introsort",
+        "heapsort",
+        "timsort"
+      ],
+      "timesSec": {
+        "introsort": 0.0010880830232053,
+        "heapsort": 0.0010935409809462,
+        "timsort": 0.0039729580166749
+      }
+    }
+  ],
+  "validation": {
+    "max_abs_probability_diff": 4.470348358154297e-07,
+    "rows_after_v5_filter_and_balance": 70994
+  }
+}
