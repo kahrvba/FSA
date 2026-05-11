@@ -132,6 +132,16 @@
         "shell_sort"
       ],
       "rows": 1803,
+      "runtimeMetrics": {
+        "rows": 1803,
+        "sbs_algorithm": "heap_sort",
+        "t_selector_sec": 0.0002355902835831761,
+        "t_sbs_sec": 0.00020990839447446522,
+        "t_vbs_sec": 0.00020627175113852283,
+        "speedup_vs_sbs": -0.12234808032813105,
+        "regret_vs_vbs_sec": 2.9318532444653274e-05,
+        "gap_closed": -7.061976316150289
+      },
       "backgroundData": [
         [
           366.0,
@@ -180,7 +190,12 @@
             "heap_sort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0002957705000881,
+            "merge_sort": 0.0005284584985929,
+            "shell_sort": 0.0002828539945767
+          }
         },
         {
           "file": "f1_2024_R16_R_43_L3_DRS.h5arr",
@@ -208,7 +223,12 @@
             "heap_sort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 9.231299918610604e-05,
+            "merge_sort": 0.0001716870028758,
+            "shell_sort": 9.699950169306248e-05
+          }
         },
         {
           "file": "f1_2022_R1_R_18_L43_DRS.h5arr",
@@ -236,7 +256,12 @@
             "heap_sort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0001088954959413,
+            "merge_sort": 0.0011471664984128,
+            "shell_sort": 0.0001112505051423
+          }
         },
         {
           "file": "f1_2018_R20_R_20_L8_DRS.h5arr",
@@ -264,7 +289,12 @@
             "heap_sort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0001016035021166,
+            "merge_sort": 0.000174541499291,
+            "shell_sort": 9.666650294093416e-05
+          }
         },
         {
           "file": "f1_2018_R16_FP1_2_L7_DRS.h5arr",
@@ -292,7 +322,12 @@
             "heap_sort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0002720625052461,
+            "merge_sort": 0.0005401460075518,
+            "shell_sort": 0.0002831454985425
+          }
         },
         {
           "file": "f1_2024_R5_R_11_L17_DRS.h5arr",
@@ -320,7 +355,12 @@
             "heap_sort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0001186665031127,
+            "merge_sort": 0.0002171875021304,
+            "shell_sort": 0.0001209585025208
+          }
         },
         {
           "file": "f1_2018_R16_Q_44_L6_DRS.h5arr",
@@ -348,7 +388,12 @@
             "heap_sort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0001123124966397,
+            "merge_sort": 0.0002157080016331,
+            "shell_sort": 0.0001144164998549
+          }
         },
         {
           "file": "f1_2024_R5_R_23_L7_DRS.h5arr",
@@ -376,7 +421,12 @@
             "heap_sort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0001152085023932,
+            "merge_sort": 0.0002098334953188,
+            "shell_sort": 0.0001197500023408
+          }
         }
       ]
     },
@@ -390,6 +440,16 @@
         "shell_sort"
       ],
       "rows": 2014,
+      "runtimeMetrics": {
+        "rows": 2014,
+        "sbs_algorithm": "shell_sort",
+        "t_selector_sec": 0.00033281948061428474,
+        "t_sbs_sec": 0.00033872627326433203,
+        "t_vbs_sec": 0.00029412123088571636,
+        "speedup_vs_sbs": 0.017438247683367044,
+        "regret_vs_vbs_sec": 3.869824972856838e-05,
+        "gap_closed": 0.13242432548117242
+      },
       "backgroundData": [
         [
           331.5,
@@ -440,7 +500,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0040778745023999,
+            "introsort": 0.0129538545079412,
+            "merge_sort": 0.0089223954928456,
+            "quick_sort": 0.3970014584992896,
+            "shell_sort": 0.0042482709977775
+          }
         },
         {
           "file": "f1_2024_R10_R_11_L23_Distance.h5arr",
@@ -470,7 +537,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0002612079915706,
+            "introsort": 8.279149915324524e-05,
+            "merge_sort": 0.0001566045029903,
+            "quick_sort": 0.0001341454990324,
+            "shell_sort": 8.602099842391908e-05
+          }
         },
         {
           "file": "f1_2019_R1_FP2_8_L4_Distance.h5arr",
@@ -500,7 +574,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006821045026299,
+            "introsort": 0.000215374995605,
+            "merge_sort": 0.0004140210003242,
+            "quick_sort": 0.0003726039940374,
+            "shell_sort": 0.0002053749922197
+          }
         },
         {
           "file": "f1_2018_R5_R_33_L26_Distance.h5arr",
@@ -530,7 +611,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0002855414932128,
+            "introsort": 8.768749830778688e-05,
+            "merge_sort": 0.0001736669946694,
+            "quick_sort": 0.0001529170112917,
+            "shell_sort": 9.02085012057796e-05
+          }
         },
         {
           "file": "f1_2018_R10_FP3_27_L6_Distance.h5arr",
@@ -560,7 +648,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0008500209951307,
+            "introsort": 0.0002230210011475,
+            "merge_sort": 0.0002198124930146,
+            "quick_sort": 0.0004515204927884,
+            "shell_sort": 0.0002845415001502
+          }
         },
         {
           "file": "f1_2018_R13_Q_28_L8_Distance.h5arr",
@@ -590,7 +685,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0011817084960057,
+            "introsort": 0.0003778749960474,
+            "merge_sort": 0.0007693334991927,
+            "quick_sort": 0.0003758750026463,
+            "shell_sort": 0.000437229500676
+          }
         },
         {
           "file": "f1_2019_R2_R_23_L33_Distance.h5arr",
@@ -620,7 +722,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0003959789974032,
+            "introsort": 0.0001139794912887,
+            "merge_sort": 0.0002292085046065,
+            "quick_sort": 0.0002000835011131,
+            "shell_sort": 0.0001192290001199
+          }
         },
         {
           "file": "f1_2024_R1_R_27_L17_Distance.h5arr",
@@ -650,7 +759,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0003085414937231,
+            "introsort": 9.42289989325218e-05,
+            "merge_sort": 0.0001841454941313,
+            "quick_sort": 0.0001659169938648,
+            "shell_sort": 9.889549255603924e-05
+          }
         }
       ]
     },
@@ -664,6 +780,16 @@
         "shell_sort"
       ],
       "rows": 1951,
+      "runtimeMetrics": {
+        "rows": 1951,
+        "sbs_algorithm": "shell_sort",
+        "t_selector_sec": 0.0005843080478199075,
+        "t_sbs_sec": 0.000658473289327723,
+        "t_vbs_sec": 0.0005432379386210757,
+        "speedup_vs_sbs": 0.11263211843191927,
+        "regret_vs_vbs_sec": 4.1070109198831765e-05,
+        "gap_closed": 0.6435980022885229
+      },
       "backgroundData": [
         [
           410.0,
@@ -714,7 +840,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005740835040342,
+            "introsort": 0.0002908750029746,
+            "merge_sort": 0.0004558545042527,
+            "quick_sort": 0.0002893954879255,
+            "shell_sort": 0.0003459165018284
+          }
         },
         {
           "file": "f1_2024_R1_FP3_16_L15_RPM.h5arr",
@@ -744,7 +877,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0002847080031642,
+            "introsort": 0.0002243119961349,
+            "merge_sort": 0.0002101880018017,
+            "quick_sort": 0.0004673959920182,
+            "shell_sort": 0.0002043335043708
+          }
         },
         {
           "file": "f1_2018_R11_R_10_L6_RPM.h5arr",
@@ -774,7 +914,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0002706040031625,
+            "introsort": 0.0001726670016068,
+            "merge_sort": 0.000205812495551,
+            "quick_sort": 0.0001712919984129,
+            "shell_sort": 0.0001861874989117
+          }
         },
         {
           "file": "f1_2018_R7_FP2_9_L10_RPM.h5arr",
@@ -804,7 +951,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005306249950081,
+            "introsort": 0.0003211665025446,
+            "merge_sort": 0.0003909375009243,
+            "quick_sort": 0.0003818745026364,
+            "shell_sort": 0.0003186454996466
+          }
         },
         {
           "file": "f1_2018_R8_FP3_11_L4_RPM.h5arr",
@@ -834,7 +988,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0008619794971309,
+            "introsort": 0.0003237909986637,
+            "merge_sort": 0.0003796249948209,
+            "quick_sort": 0.0003163544970448,
+            "shell_sort": 0.0006260829977691
+          }
         },
         {
           "file": "f1_2018_R5_R_16_L28_RPM.h5arr",
@@ -864,7 +1025,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0002803750030579,
+            "introsort": 0.0001861045093392,
+            "merge_sort": 0.0002079999976558,
+            "quick_sort": 0.0004297084960853,
+            "shell_sort": 0.0001958960056072
+          }
         },
         {
           "file": "f1_2018_R20_R_8_L63_RPM.h5arr",
@@ -894,7 +1062,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005263954953989,
+            "introsort": 0.000328646005073,
+            "merge_sort": 0.0003791874987655,
+            "quick_sort": 0.0003435414982959,
+            "shell_sort": 0.0003403544978937
+          }
         },
         {
           "file": "f1_2018_R5_R_20_L57_RPM.h5arr",
@@ -924,7 +1099,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005972909930278,
+            "introsort": 0.0003873125024256,
+            "merge_sort": 0.0004370625028968,
+            "quick_sort": 0.0004201874980935,
+            "shell_sort": 0.0004019375046482
+          }
         }
       ]
     },
@@ -938,6 +1120,16 @@
         "shell_sort"
       ],
       "rows": 2607,
+      "runtimeMetrics": {
+        "rows": 2607,
+        "sbs_algorithm": "shell_sort",
+        "t_selector_sec": 0.0004780302755126675,
+        "t_sbs_sec": 0.000518399428168682,
+        "t_vbs_sec": 0.0004296109245978234,
+        "speedup_vs_sbs": 0.07787267975704411,
+        "regret_vs_vbs_sec": 4.841935091484407e-05,
+        "gap_closed": 0.4546664380236741
+      },
       "backgroundData": [
         [
           386.0,
@@ -988,7 +1180,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0002997704941662,
+            "introsort": 0.0001837289964896,
+            "merge_sort": 0.0002126455074176,
+            "quick_sort": 0.0002235829961136,
+            "shell_sort": 0.000183416501386
+          }
         },
         {
           "file": "f1_2024_R4_FP1_77_L9_Speed.h5arr",
@@ -1018,7 +1217,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0008035830032895,
+            "introsort": 0.0002591454976936,
+            "merge_sort": 0.0005961040005786,
+            "quick_sort": 0.0002526454991311,
+            "shell_sort": 0.0004844585055252
+          }
         },
         {
           "file": "f1_2024_R18_R_81_L22_Speed.h5arr",
@@ -1048,7 +1254,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0008178124917321,
+            "introsort": 0.0005064790020696,
+            "merge_sort": 0.0004694164963439,
+            "quick_sort": 0.0004416670053615,
+            "shell_sort": 0.0004198335082037
+          }
         },
         {
           "file": "f1_2024_R15_R_14_L13_Speed.h5arr",
@@ -1078,7 +1291,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005019579984946,
+            "introsort": 0.000368103996152,
+            "merge_sort": 0.0003557504969649,
+            "quick_sort": 0.000443749500846,
+            "shell_sort": 0.0003416460021981
+          }
         },
         {
           "file": "f1_2018_R3_R_55_L25_Speed.h5arr",
@@ -1108,7 +1328,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0007476249957107,
+            "introsort": 0.0003110420002485,
+            "merge_sort": 0.0004905835012323,
+            "quick_sort": 0.0003055835040868,
+            "shell_sort": 0.0004493119995458
+          }
         },
         {
           "file": "f1_2022_R1_R_3_L8_Speed.h5arr",
@@ -1138,7 +1365,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006732085021212,
+            "introsort": 0.0004776045025209,
+            "merge_sort": 0.0004840415058424,
+            "quick_sort": 0.0004123750040889,
+            "shell_sort": 0.0004174999994575
+          }
         },
         {
           "file": "f1_2018_R3_Q_20_L7_Speed.h5arr",
@@ -1168,7 +1402,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0009193540026899,
+            "introsort": 0.0005480835025082,
+            "merge_sort": 0.0006537915032822,
+            "quick_sort": 0.0007325624974328,
+            "shell_sort": 0.0005536669996217
+          }
         },
         {
           "file": "f1_2022_R1_R_10_L16_Speed.h5arr",
@@ -1198,7 +1439,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006304579947027,
+            "introsort": 0.0004029584961244,
+            "merge_sort": 0.0005297290044836,
+            "quick_sort": 0.0005223125044722,
+            "shell_sort": 0.0004037289982079
+          }
         }
       ]
     },
@@ -1212,6 +1460,16 @@
         "shell_sort"
       ],
       "rows": 745,
+      "runtimeMetrics": {
+        "rows": 745,
+        "sbs_algorithm": "merge_sort",
+        "t_selector_sec": 0.0009510081283565615,
+        "t_sbs_sec": 0.0009689352912347331,
+        "t_vbs_sec": 0.0008157347643633355,
+        "speedup_vs_sbs": 0.018501919622853944,
+        "regret_vs_vbs_sec": 0.00013527336399322607,
+        "gap_closed": 0.1170176320165031
+      },
       "backgroundData": [
         [
           460.0,
@@ -1262,7 +1520,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.000397146504838,
+            "introsort": 0.000261249995674,
+            "merge_sort": 0.0002152500019292,
+            "quick_sort": 0.00071102099173,
+            "shell_sort": 0.0002205204946221
+          }
         },
         {
           "file": "f1_2024_R5_R_1_L47_Throttle.h5arr",
@@ -1292,7 +1557,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0007380625029327,
+            "introsort": 0.0021540625020861,
+            "merge_sort": 0.0006301465036813,
+            "quick_sort": 0.0035781245023827,
+            "shell_sort": 0.0006408125045709
+          }
         },
         {
           "file": "f1_2018_R19_R_27_L41_Throttle.h5arr",
@@ -1322,7 +1594,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.000206270997296,
+            "introsort": 0.000356479002221,
+            "merge_sort": 0.0002000420063268,
+            "quick_sort": 0.0007013540016487,
+            "shell_sort": 0.0003196874968125
+          }
         },
         {
           "file": "f1_2024_R3_FP3_11_L13_Throttle.h5arr",
@@ -1352,7 +1631,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0003849795029964,
+            "introsort": 0.0008390834918827,
+            "merge_sort": 0.0003703539987327,
+            "quick_sort": 0.0020839999924646,
+            "shell_sort": 0.000854812504258
+          }
         },
         {
           "file": "f1_2024_R3_Q_1_L5_Throttle.h5arr",
@@ -1382,7 +1668,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0003633960004663,
+            "introsort": 0.0008585835021222,
+            "merge_sort": 0.0003605624951887,
+            "quick_sort": 0.0009560005055391,
+            "shell_sort": 0.0017039165031746
+          }
         },
         {
           "file": "f1_2019_R3_FP2_4_L2_Throttle.h5arr",
@@ -1412,7 +1705,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0015510630037169,
+            "introsort": 0.0007358545044553,
+            "merge_sort": 0.0005795835022581,
+            "quick_sort": 0.0018850210035452,
+            "shell_sort": 0.0005895625072298
+          }
         },
         {
           "file": "f1_2018_R7_Q_3_L15_Throttle.h5arr",
@@ -1442,7 +1742,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0007244579974212,
+            "introsort": 0.0008492920023854,
+            "merge_sort": 0.0006432709924411,
+            "quick_sort": 0.0062271460119518,
+            "shell_sort": 0.0006769374958821
+          }
         },
         {
           "file": "f1_2018_R13_Q_28_L12_Throttle.h5arr",
@@ -1472,7 +1779,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0033697500039124,
+            "introsort": 0.0017496875007054,
+            "merge_sort": 0.0020309579995227,
+            "quick_sort": 0.0374912920015049,
+            "shell_sort": 0.0017107289968407
+          }
         }
       ]
     },
@@ -1486,6 +1800,16 @@
         "shell_sort"
       ],
       "rows": 1295,
+      "runtimeMetrics": {
+        "rows": 1295,
+        "sbs_algorithm": "shell_sort",
+        "t_selector_sec": 0.0005509970542418259,
+        "t_sbs_sec": 0.0005764936204166754,
+        "t_vbs_sec": 0.0004713374770198299,
+        "speedup_vs_sbs": 0.04422697020726992,
+        "regret_vs_vbs_sec": 7.9659577221996e-05,
+        "gap_closed": 0.24246387658616184
+      },
       "backgroundData": [
         [
           362.0,
@@ -1536,7 +1860,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005502294952748,
+            "introsort": 0.0006726874926243,
+            "merge_sort": 0.0003548335007508,
+            "quick_sort": 0.0002629794980748,
+            "shell_sort": 0.0002721459968597
+          }
         },
         {
           "file": "f1_2018_R10_R_55_L36_X.h5arr",
@@ -1566,7 +1897,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0011406459962017,
+            "introsort": 0.0003178129991283,
+            "merge_sort": 0.0016484590014442,
+            "quick_sort": 0.0003131039993604,
+            "shell_sort": 0.0006901870001456
+          }
         },
         {
           "file": "f1_2019_R2_FP2_55_L14_X.h5arr",
@@ -1596,7 +1934,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005534790034289,
+            "introsort": 0.0020302289995015,
+            "merge_sort": 0.0003909375009243,
+            "quick_sort": 0.0003041454983758,
+            "shell_sort": 0.0003115620056632
+          }
         },
         {
           "file": "f1_2024_R19_R_43_L19_X.h5arr",
@@ -1626,7 +1971,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006928330039954,
+            "introsort": 0.0008743125072214,
+            "merge_sort": 0.0004644579967134,
+            "quick_sort": 0.0003301039978396,
+            "shell_sort": 0.0003392505022929
+          }
         },
         {
           "file": "f1_2024_R2_R_31_L24_X.h5arr",
@@ -1656,7 +2008,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0010264795055263,
+            "introsort": 0.0011972914944635,
+            "merge_sort": 0.0005366455006878,
+            "quick_sort": 0.0003592915018089,
+            "shell_sort": 0.0003527709995978
+          }
         },
         {
           "file": "f1_2019_R3_R_10_L16_X.h5arr",
@@ -1686,7 +2045,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006079164959373,
+            "introsort": 0.00028695850051,
+            "merge_sort": 0.0002690210021683,
+            "quick_sort": 0.0002782920055324,
+            "shell_sort": 0.0002867910006898
+          }
         },
         {
           "file": "f1_2018_R21_R_11_L11_X.h5arr",
@@ -1716,7 +2082,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006274379920796,
+            "introsort": 0.0004523745010374,
+            "merge_sort": 0.0004435000009834,
+            "quick_sort": 0.0004958955032634,
+            "shell_sort": 0.0005959165064268
+          }
         },
         {
           "file": "f1_2019_R3_R_4_L33_X.h5arr",
@@ -1746,7 +2119,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006422710066544,
+            "introsort": 0.0007973335013957,
+            "merge_sort": 0.0004527494966168,
+            "quick_sort": 0.0002668335000635,
+            "shell_sort": 0.000278083498415
+          }
         }
       ]
     },
@@ -1760,6 +2140,16 @@
         "shell_sort"
       ],
       "rows": 1256,
+      "runtimeMetrics": {
+        "rows": 1256,
+        "sbs_algorithm": "shell_sort",
+        "t_selector_sec": 0.0005328183956725994,
+        "t_sbs_sec": 0.000609607714155106,
+        "t_vbs_sec": 0.0004545691326189815,
+        "speedup_vs_sbs": 0.1259651357741327,
+        "regret_vs_vbs_sec": 7.824926305361791e-05,
+        "gap_closed": 0.49529167334786556
+      },
       "backgroundData": [
         [
           360.0,
@@ -1810,7 +2200,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006735415008733,
+            "introsort": 0.0004775835041073,
+            "merge_sort": 0.0003909164952347,
+            "quick_sort": 0.0003747709997696,
+            "shell_sort": 0.000390958499338
+          }
         },
         {
           "file": "f1_2018_R9_FP3_14_L19_Y.h5arr",
@@ -1840,7 +2237,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006373960059136,
+            "introsort": 0.0004851874982705,
+            "merge_sort": 0.0004850209952564,
+            "quick_sort": 0.0006562915004906,
+            "shell_sort": 0.0005003744954592
+          }
         },
         {
           "file": "f1_2022_R1_R_22_L24_Y.h5arr",
@@ -1870,7 +2274,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006442914964281,
+            "introsort": 0.0002009585004998,
+            "merge_sort": 0.0002339590064366,
+            "quick_sort": 0.0002095835006912,
+            "shell_sort": 0.0003672919992823
+          }
         },
         {
           "file": "f1_2018_R19_R_3_L61_Y.h5arr",
@@ -1900,7 +2311,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0004217500027152,
+            "introsort": 0.0007918955016066,
+            "merge_sort": 0.0003100420071859,
+            "quick_sort": 0.0009261459999834,
+            "shell_sort": 0.0003101664988207
+          }
         },
         {
           "file": "f1_2024_R5_FP1_10_L8_Y.h5arr",
@@ -1930,7 +2348,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005781250001746,
+            "introsort": 0.0003172705037286,
+            "merge_sort": 0.0003189584967913,
+            "quick_sort": 0.0003440414948272,
+            "shell_sort": 0.000588978997257
+          }
         },
         {
           "file": "f1_2024_R10_FP2_16_L20_Y.h5arr",
@@ -1960,7 +2385,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005330624990165,
+            "introsort": 0.0006687080094707,
+            "merge_sort": 0.0003899795046891,
+            "quick_sort": 0.0002771665022009,
+            "shell_sort": 0.0002800204965751
+          }
         },
         {
           "file": "f1_2018_R18_R_33_L49_Y.h5arr",
@@ -1990,7 +2422,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005772500007878,
+            "introsort": 0.0005493744974955,
+            "merge_sort": 0.0004003750073025,
+            "quick_sort": 0.0005496250014402,
+            "shell_sort": 0.0004154170092078
+          }
         },
         {
           "file": "f1_2024_R7_Q_27_L16_Y.h5arr",
@@ -2020,7 +2459,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0013052295034867,
+            "introsort": 0.0027134794945595,
+            "merge_sort": 0.0013388125080382,
+            "quick_sort": 0.0687214379940996,
+            "shell_sort": 0.0021196875022724
+          }
         }
       ]
     },
@@ -2034,6 +2480,16 @@
         "shell_sort"
       ],
       "rows": 1009,
+      "runtimeMetrics": {
+        "rows": 1009,
+        "sbs_algorithm": "shell_sort",
+        "t_selector_sec": 0.0006077713179185806,
+        "t_sbs_sec": 0.0007083632141476736,
+        "t_vbs_sec": 0.0005502776537709963,
+        "speedup_vs_sbs": 0.1420060983123306,
+        "regret_vs_vbs_sec": 5.74936641475843e-05,
+        "gap_closed": 0.6363129939850822
+      },
       "backgroundData": [
         [
           369.0,
@@ -2084,7 +2540,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005616039925371,
+            "introsort": 0.0006308754964265,
+            "merge_sort": 0.0003966044969274,
+            "quick_sort": 0.0012791250046575,
+            "shell_sort": 0.0004037914914079
+          }
         },
         {
           "file": "f1_2024_R12_R_31_L17_Z.h5arr",
@@ -2114,7 +2577,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006502909964183,
+            "introsort": 0.0017865004920167,
+            "merge_sort": 0.0012069169970345,
+            "quick_sort": 0.0003556875017238,
+            "shell_sort": 0.0003433960009715
+          }
         },
         {
           "file": "f1_2024_R4_R_2_L2_Z.h5arr",
@@ -2144,7 +2614,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0014652294921688,
+            "introsort": 0.0017065205029211,
+            "merge_sort": 0.0010981254963553,
+            "quick_sort": 0.0059159789961995,
+            "shell_sort": 0.0011416874986025
+          }
         },
         {
           "file": "f1_2024_R11_R_20_L42_Z.h5arr",
@@ -2174,7 +2651,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0004557285064947,
+            "introsort": 0.000412771005358,
+            "merge_sort": 0.0003208955022273,
+            "quick_sort": 0.0002115000024787,
+            "shell_sort": 0.0002174580004066
+          }
         },
         {
           "file": "f1_2018_R16_R_5_L39_Z.h5arr",
@@ -2204,7 +2688,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005670004975399,
+            "introsort": 0.0007432295024045,
+            "merge_sort": 0.0004226044984534,
+            "quick_sort": 0.0003844170059892,
+            "shell_sort": 0.0003830000059679
+          }
         },
         {
           "file": "f1_2024_R17_FP1_4_L11_Z.h5arr",
@@ -2234,7 +2725,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0008639790030429,
+            "introsort": 0.001465958499466,
+            "merge_sort": 0.0006204784949659,
+            "quick_sort": 0.0004301670051063,
+            "shell_sort": 0.0004401664991746
+          }
         },
         {
           "file": "f1_2024_R15_R_18_L19_Z.h5arr",
@@ -2264,7 +2762,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0004945205000694,
+            "introsort": 0.0003084374984609,
+            "merge_sort": 0.0003622505028033,
+            "quick_sort": 0.000244124996243,
+            "shell_sort": 0.0002561249930295
+          }
         },
         {
           "file": "f1_2018_R11_R_10_L44_Z.h5arr",
@@ -2294,7 +2799,14 @@
             "merge_sort",
             "quick_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0013961254953755,
+            "introsort": 0.0002059789985651,
+            "merge_sort": 0.000197396002477,
+            "quick_sort": 0.0003451874945312,
+            "shell_sort": 0.0002938124962383
+          }
         }
       ]
     },
@@ -2307,6 +2819,16 @@
         "shell_sort"
       ],
       "rows": 533,
+      "runtimeMetrics": {
+        "rows": 533,
+        "sbs_algorithm": "heap_sort",
+        "t_selector_sec": 0.0008563676703733661,
+        "t_sbs_sec": 0.0009294853864447269,
+        "t_vbs_sec": 0.0008143335137578884,
+        "speedup_vs_sbs": 0.07866472904005019,
+        "regret_vs_vbs_sec": 4.203415661547768e-05,
+        "gap_closed": 0.6349676680483367
+      },
       "backgroundData": [
         [
           531.0,
@@ -2356,7 +2878,13 @@
             "introsort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006781045012758,
+            "introsort": 0.0014920000030542,
+            "merge_sort": 0.0005852085014339,
+            "shell_sort": 0.0006034370017005
+          }
         },
         {
           "file": "f1_2018_R21_FP1_7_L20_nGear.h5arr",
@@ -2385,7 +2913,13 @@
             "introsort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0006017710038577,
+            "introsort": 0.0009715619962662,
+            "merge_sort": 0.0005702499984181,
+            "shell_sort": 0.0005431250028777
+          }
         },
         {
           "file": "f1_2018_R15_FP3_10_L11_nGear.h5arr",
@@ -2414,7 +2948,13 @@
             "introsort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0012144579959567,
+            "introsort": 0.0034700624964898,
+            "merge_sort": 0.0022356874978868,
+            "shell_sort": 0.001250125496881
+          }
         },
         {
           "file": "f1_2019_R2_FP3_11_L4_nGear.h5arr",
@@ -2443,7 +2983,13 @@
             "introsort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0024708960045245,
+            "introsort": 0.0081068954968941,
+            "merge_sort": 0.0064798329985933,
+            "shell_sort": 0.0025245415017707
+          }
         },
         {
           "file": "f1_2018_R19_FP3_28_L6_nGear.h5arr",
@@ -2472,7 +3018,13 @@
             "introsort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0005054789944551,
+            "introsort": 0.0008201460004784,
+            "merge_sort": 0.0004827709999517,
+            "shell_sort": 0.0006692714960081
+          }
         },
         {
           "file": "f1_2018_R15_FP1_31_L16_nGear.h5arr",
@@ -2501,7 +3053,13 @@
             "introsort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0003660625006887,
+            "introsort": 0.0007537290002801,
+            "merge_sort": 0.0003700205052155,
+            "shell_sort": 0.0018832290006685
+          }
         },
         {
           "file": "f1_2019_R3_Q_16_L16_nGear.h5arr",
@@ -2530,7 +3088,13 @@
             "introsort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0004718130003311,
+            "introsort": 0.0011949585023103,
+            "merge_sort": 0.0007435625011567,
+            "shell_sort": 0.0004706455001723
+          }
         },
         {
           "file": "f1_2018_R14_FP2_2_L17_nGear.h5arr",
@@ -2559,7 +3123,13 @@
             "introsort",
             "merge_sort",
             "shell_sort"
-          ]
+          ],
+          "timesSec": {
+            "heap_sort": 0.0010248125036014,
+            "introsort": 0.0056453750003129,
+            "merge_sort": 0.0023513749983976,
+            "shell_sort": 0.0010491460052435
+          }
         }
       ]
     }

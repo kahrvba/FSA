@@ -20,6 +20,26 @@ const K = 10;
 const ROW_HEIGHT = 28;
 const FORMAT_2 = d3.format('.4f');
 const BAR_HEIGHT = ROW_HEIGHT - 8;
+const SHAP_DOMAIN_PAD = 1.08;
+
+type ChannelRuntimeMetrics = {
+  rows: number;
+  sbs_algorithm: string;
+  t_selector_sec: number;
+  t_sbs_sec: number;
+  t_vbs_sec: number;
+  speedup_vs_sbs: number;
+  regret_vs_vbs_sec: number;
+  gap_closed: number;
+};
+
+type RowExample = {
+  file: string;
+  trueLabel: string;
+  x: number[];
+  supportedLabels: string[];
+  timesSec?: Record<string, number>;
+};
 
 /**
  * Class for the Tabular WebSHAP demo
@@ -67,6 +87,14 @@ export class Tabular {
   modelReady = false;
   loadRequestId = 0;
   pendingInference = false;
+  currentRuntimeMetrics: ChannelRuntimeMetrics | null = null;
+  currentExample: RowExample | null = null;
+
+  isPredictionCorrect = (): boolean | null => {
+    if (!this.currentExample || !this.currentExample.trueLabel) return null;
+    if (!this.curPredLabel) return null;
+    return this.curPredLabel === this.currentExample.trueLabel;
+  };
 
   /**
    * @param args Named parameters
@@ -278,6 +306,53 @@ export class Tabular {
     }
   };
 
+  getRuntimeMetricRows = (): SHAPRow[] => {
+    if (!this.currentRuntimeMetrics) return [];
+    const m = this.currentRuntimeMetrics;
+    const ex = this.currentExample;
+    const predLabel = this.curPredLabel;
+    const rowTimes = ex?.timesSec || {};
+    const hasRowTimes = predLabel && Number.isFinite(rowTimes[predLabel]);
+
+    const sbsAlgo = m.sbs_algorithm;
+    const selectedTime = hasRowTimes ? Number(rowTimes[predLabel]) : m.t_selector_sec;
+    const sbsTime = Number.isFinite(rowTimes[sbsAlgo])
+      ? Number(rowTimes[sbsAlgo])
+      : m.t_sbs_sec;
+    const vbsTimeCandidates = Object.values(rowTimes).filter((v) => Number.isFinite(v));
+    const vbsTime = vbsTimeCandidates.length > 0
+      ? Math.min(...vbsTimeCandidates)
+      : m.t_vbs_sec;
+
+    const speedupVsSbs = sbsTime > 0 ? (sbsTime - selectedTime) / sbsTime : 0;
+    const regretVsVbsSec = selectedTime - vbsTime;
+    const gapDen = sbsTime - vbsTime;
+    const gapClosed = Math.abs(gapDen) > 1e-18 ? (sbsTime - selectedTime) / gapDen : 0;
+
+    return [
+      {
+        index: 100001,
+        shap: Number.isFinite(speedupVsSbs) ? speedupVsSbs : 0,
+        name: 'Selector vs SBS',
+        fullName: `Selector vs SBS speedup: ${(speedupVsSbs * 100).toFixed(2)}%`
+      },
+      {
+        index: 100002,
+        shap: Number.isFinite(regretVsVbsSec)
+          ? -regretVsVbsSec * 1000.0
+          : 0,
+        name: 'Regret vs VBS',
+        fullName: `Regret vs VBS: ${(regretVsVbsSec * 1000).toFixed(4)} ms`
+      },
+      {
+        index: 100003,
+        shap: Number.isFinite(gapClosed) ? gapClosed : 0,
+        name: 'Gap Closed',
+        fullName: `Gap closed: ${(gapClosed * 100).toFixed(2)}%`
+      }
+    ];
+  };
+
   initPredBar = () => {
     if (this.predBarSVG === null) throw Error('predBarSVG is null.');
 
@@ -380,9 +455,13 @@ export class Tabular {
     this.maxTextWidth = maxTextWidth;
     this.maxBarWidth = maxBarWidth;
 
-    // Create scales
-    const absValues = this.curShapValues.map(x => Math.abs(x));
-    const maxAbs = d3.max(absValues)!;
+    // Create scales (include runtime metric rows so bars never overflow)
+    const metricRowsForScale = this.getRuntimeMetricRows();
+    const absValues = [
+      ...this.curShapValues.map(x => Math.abs(x)),
+      ...metricRowsForScale.map((r) => Math.abs(r.shap))
+    ];
+    const maxAbs = d3.max(absValues)! * SHAP_DOMAIN_PAD;
     this.shapScale = d3
       .scaleLinear()
       .domain([0, maxAbs])
@@ -438,6 +517,9 @@ export class Tabular {
 
     // Sort all shaps based on their absolute shap values
     allShaps.sort((a, b) => Math.abs(b.shap) - Math.abs(a.shap));
+    const metricRows = metricRowsForScale;
+    const topRows = [...metricRows, ...allShaps].slice(0, K);
+    const topRowIndexSet = new Set(topRows.map((r) => r.index));
 
     const rowContent = content
       .append('g')
@@ -516,15 +598,17 @@ export class Tabular {
     };
 
     // Add the top K in a list
-    for (let i = 0; i < K; i++) {
-      const shap = allShaps[i];
+    for (let i = 0; i < topRows.length; i++) {
+      const shap = topRows[i];
       addShapRow(shap, i * ROW_HEIGHT, 1);
     }
 
     // Draw the rest shap values off the screen
-    for (let i = K; i < this.data.featureNames.length; i++) {
+    for (let i = 0; i < allShaps.length; i++) {
       const shap = allShaps[i];
-      addShapRow(shap, this.shapSVGSize.height + 5, 0);
+      if (!topRowIndexSet.has(shap.index)) {
+        addShapRow(shap, this.shapSVGSize.height + 5, 0);
+      }
     }
 
     // Draw the axis
@@ -550,9 +634,13 @@ export class Tabular {
 
     const curX = this.getCurX();
 
-    // Create scales
-    const absValues = this.curShapValues.map(x => Math.abs(x));
-    const maxAbs = d3.max(absValues)!;
+    // Create scales (include runtime metric rows so bars never overflow)
+    const metricRowsForScale = this.getRuntimeMetricRows();
+    const absValues = [
+      ...this.curShapValues.map(x => Math.abs(x)),
+      ...metricRowsForScale.map((r) => Math.abs(r.shap))
+    ];
+    const maxAbs = d3.max(absValues)! * SHAP_DOMAIN_PAD;
     this.shapScale = d3
       .scaleLinear()
       .domain([0, maxAbs])
@@ -608,6 +696,9 @@ export class Tabular {
 
     // Sort all shaps based on their absolute shap values
     allShaps.sort((a, b) => Math.abs(b.shap) - Math.abs(a.shap));
+    const metricRows = metricRowsForScale;
+    const topRows = [...metricRows, ...allShaps].slice(0, K);
+    const topRowIndexSet = new Set(topRows.map((r) => r.index));
 
     const content = this.shapSVG.select('g.content');
     const rowContent = this.shapSVG.select('g.row-content');
@@ -666,16 +757,18 @@ export class Tabular {
         );
     };
 
-    // Update the top 10 features first
-    for (let i = 0; i < K; i++) {
-      const shap = allShaps[i];
+    // Update the top 10 rows first (first 3 reserved for runtime metrics)
+    for (let i = 0; i < topRows.length; i++) {
+      const shap = topRows[i];
       updateShapRow(shap, i * ROW_HEIGHT, 1);
     }
 
     // Draw the rest shap values off the screen
-    for (let i = K; i < this.data.featureNames.length; i++) {
+    for (let i = 0; i < allShaps.length; i++) {
       const shap = allShaps[i];
-      updateShapRow(shap, this.shapSVGSize.height + 5, 0);
+      if (!topRowIndexSet.has(shap.index)) {
+        updateShapRow(shap, this.shapSVGSize.height + 5, 0);
+      }
     }
 
     // Update the axis
@@ -739,9 +832,10 @@ export class Tabular {
     }
 
     const examples = this.sortingConfig.channels[this.selectedChannel]
-      .examples as Array<any>;
+      .examples as Array<RowExample>;
     const randomIndex = d3.randomInt(examples.length)();
     const ex = examples[randomIndex];
+    this.currentExample = ex;
     this.curX = ex.x.slice();
     this.featureValues = ex.x.slice();
     this.curY = 0;
@@ -825,6 +919,8 @@ export class Tabular {
     this.selectedChannel = channel;
     this.curClassLabels = (this.sortingConfig.channels[channel].classes ||
       []) as string[];
+    this.currentRuntimeMetrics =
+      this.sortingConfig.channels[channel].runtimeMetrics || null;
 
     const modelRel = this.sortingConfig.channels[channel].model as string;
     const modelUrl = `${import.meta.env.BASE_URL}${modelRel}`;

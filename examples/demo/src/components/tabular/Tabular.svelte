@@ -252,7 +252,15 @@ import { Tabular } from './Tabular';
         <span class="line-loader hidden"></span>
         <div class="start-rectangle"></div>
         <div class="content-box">
-          <span class="name"> ASA</span>
+          <span class="name">
+            {#if myTabular && myTabular.isPredictionCorrect() === true}
+              Correct
+            {:else if myTabular && myTabular.isPredictionCorrect() === false}
+              Incorrect
+            {:else}
+              --
+            {/if}
+          </span>
           <div class="loader-container hidden">
             <div class="circle-loader"></div>
           </div>
@@ -314,7 +322,7 @@ import { Tabular } from './Tabular';
           <span class="svg-icon no-pointer">
             {@html iconOpen}
           </span>
-          <span class="section-name"> Model Explanation</span>
+          <span class="section-name"> Algorithm Selection</span>
           <span class="section-description"
             >Each feature's contribution to model's prediction
           </span>
