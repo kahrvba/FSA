@@ -1,0 +1,22 @@
+@import '../../define';
+@import 'ArticleText';
+
+.article-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 5px);
+  max-height: 820px;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  position: relative;
+  // display: none;
+}

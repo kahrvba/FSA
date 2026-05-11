@@ -1,0 +1,222 @@
+tool:
+  - >
+    Machine learning (ML) has been integrated into our everyday Web experience
+    from social media ranking to fraud detection. For better privacy and lower
+    latency, researchers and developers have made strides in developing Web ML
+    models that can run on clients' edge devices. To reflect the "transparency
+    and explainability" <a
+    href='https://www.w3.org/TR/webmachinelearning-ethics/#principle-6-transparency-and-explainability'
+    target='_blank' rel='noreferrer'>ethical principle</a> of Web ML, <strong><a
+    href='https://github.com/poloclub/webshap' target='_blank'
+    rel='noreferrer'>WebSHAP</a> is the first JavaScript library</strong> that brings <a
+    href='https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html'
+    target='_blank' rel='noreferrer'>Kernel SHAP</a> to the Web
+    environment—<em>enabling developers and end-users to explain any ML
+    models anywhere.</em>
+
+  - >
+    Kernel SHAP is the state-of-the-art model-agnostic explainability technique
+    to help ML practitioners and end-users understand how ML models make
+    predictions. For any given ML model, Kernel SHAP computes the contribution
+    score of each input feature. Developed with modern web technologies, such as
+    <em>WebGL</em> and <em>Web Workers</em>, WebSHAP empowers users to run
+    Kernel SHAP directly in their browsers, providing a
+    <strong>ubiquitous</strong>, <strong>private</strong>, and
+    <strong>interactive</strong> explanation experience.
+
+usage:
+  p1: >
+    WebSHAP supports both browser and Node.js environments. To install WebSHAP,
+    you can use npm: <code>npm install webshap</code>. Then, you just need to
+    call one function to explain the predictions of your ML model in the
+    browser. To get started, see <a
+    href='https://github.com/poloclub/webshap#getting-started' target='_blank'
+    rel='noreferrer'>this tutorial</a> and the <a
+    href='https://poloclub.github.io/webshap/doc/' target='_blank'
+    rel='noreferrer'>documentation</a>.
+
+tutorial:
+  p1: >
+    On this webpage, we showcase three diverse examples that apply WebSHAP to
+    explain ML models in your browser. These examples use distinct model
+    architectures (e.g., gradient-boosting, CNNs, and transformers) and data
+    types (tabular, image, and text).
+  items:
+    - id: tabular
+      name: Explaining XGBoost
+      isWide: false
+      descriptions:
+        - >
+          We present Loan Explainer as an example of applying WebSHAP to explain
+          a financial ML model in browsers. For a live demo of Loan Explainer,
+          click the <a href='./?model=text'>first tab</a> under the tool.
+        - >
+          This example showcases a bank using an <a
+          href='https://github.com/dmlc/xgboost' target='_blank'
+          rel='noreferrer'>XGBoost classifier</a> on the <a
+          href='https://www.kaggle.com/datasets/wordsforthewise/lending-club'
+          target='_blank' rel='noreferrer'>LendingClub</a> dataset to predict if
+          a loan applicant will be able to repay the loan on time. With this
+          model, the bank can make automatic loan approval decisions. It's
+          important to understand how these high-stakes decisions are being
+          made, and that's where WebSHAP comes in. It provides <em>private</em>,
+          <em>ubiquitous</em>, and <em>interactive</em> ML explanations.
+        - >
+          This demo runs entirely on the client side, making it accessible from
+          desktops, tablets, and phones. The model inference is powered by <a
+          href='https://github.com/microsoft/onnxruntime' target='_blank'
+          rel='noreferrer'>ONNX Runtime</a>. With Loan Explainer, users can
+          experiment with different feature inputs and instantly see the model's
+          predictions, along with clear explanations for those predictions.
+      caption: The <em>loan explainer</em> applies WebSHAP to explain an XGBoost
+        model in the browser. Users can click the shuffle button to change a
+        random test sample. Users can also modify individual continuous and
+        categorical input features. XGBoost will give a new prediction on the
+        updated input data and WebSHAP will explain the prediction in real time.
+    - id: image
+      name: Explaining Convolutional Neural Networks (CNNs)
+      isWide: true
+      descriptions:
+        - >
+          We apply WebSHAP to explain convolutional neural networks (CNNs) in
+          browsers. For a live demo of this explainer,
+          click the <a href='./?model=image'>second tab</a> under the tool.
+        - >
+          In this example, we first train a TinyVGG model to classify images
+          into four categories: 🐞<code>Ladybug</code>, ☕️<code>Espresso</code>,
+          🍊<code>Orange</code>, and 🚙<code>Sports Car</code>. TinyVGG is a
+          type of convolutional neural network. For more details about the model
+          architecture, check out <a href='https://poloclub.github.io/cnn-explainer' target='_blank' rel='noreferrer'>CNN Explainer</a>. TinyVGG is implemented using
+          <a href='https://www.tensorflow.org/js' target='_blank' rel='noreferrer'>TensorFlow.js</a>.
+        - >
+          To explain the predictions of TinyVGG, we first apply image
+          segmentation (<a
+          href='https://www.iro.umontreal.ca/~mignotte/IFT6150/Articles/SLIC_Superpixels.pdf'
+          target='_blank' rel='noreferrer'>SLIC</a>) to divide the input image
+          into multiple segments. Then, we compute SHAP scores on each segment
+          for each class. The background data here are white pixels. We compute
+          SHAP values for segments instead of raw pixels for computation
+          efficiency. For example, in the figure above, there are only 16 input
+          features (16 segments) for WebSHAP, but there would have been \(64 \times 64
+          \times 3 = 12,288\) input features if we use raw pixels. Finally, we visualize
+          the SHAP scores of each segment as an overlay with a diverging color
+          scale on top of the original input image.
+        - >
+          Everything in this example (TinyVGG, image segmenter, WebSHAP) runs in
+          the user's browser. WebSHAP enables <em>interactive</em>
+          explanation: users can click a button to use a random input image or
+          upload their own images. Both model inference and SHAP computation are
+          real-time.
+      caption: >
+        The <em>image classifier explainer</em> applies WebSHAP to explain a CNN
+        model in the browser. Users can click the shuffle button to change a
+        random input image. Users can also upload their own images by clicking
+        the upload button. The CNN model will give a new prediction on the new
+        input image in real time. WebSHAP will compute SHAP scores on a few
+        segments of the image and visualize the SHAP scores with a diverging
+        color scale.
+    - id: text
+      name: Explaining Transformers
+      isWide: false
+      descriptions:
+        - >
+          We use WebSHAP to explain the predictions of a Transformer text
+          classifier in browsers. For a live demo of this explainer,
+          click the <a href='./?model=text'>second tab</a> under the tool.
+        - >
+          We train an <a
+          href='https://github.com/microsoft/xtreme-distil-transformers'
+          target='_blank' rel='noreferrer'>XtremeDistil model</a> to predict if
+          an input text is toxic. The model is a distilled version
+          of pre-trained transformer-based language model BERT. We train this
+          model on the <a
+          href='https://www.kaggle.com/competitions/jigsaw-toxic-comment-classification-challenge/data'
+          target='_blank' rel='noreferrer'>Toxic Comments dataset</a>. Then, we
+          quantize and export the trained model to use <code>int8</code> weights with <a
+          href='https://github.com/onnx/onnxmltools' target='_blank'
+          rel='noreferrer'>ONNX</a>. We use <a
+          href='https://github.com/tensorflow/tfjs-models/blob/master/qna/src/bert_tokenizer.ts'
+          target='_blank' rel='noreferrer'>TensorFlow.js</a> for tokenization
+          and <a href='https://onnxruntime.ai/' target='_blank'
+          rel='noreferrer'>ONNX Runtime</a> for model inference.
+        - >
+          To explain the model's predictions, we compute SHAP scores for each
+          input token. For background data, we use BERT's attention mechanism to
+          mask tokens. For example, we represent a "missing" token by setting
+          its <a
+          href='https://huggingface.co/docs/transformers/glossary#attention-mask'
+          target='_blank' rel='noreferrer'>attention map</a> to <code>0</code>,
+          which tells the model to ignore this token. Finally, we visualize the
+          SHAP scores as token's background color with a diverging color scale.
+        - >
+          All components in this example (XtremeDistil, tokenizer, WebSHAP) runs
+          on the client-side. WebSHAP provides provides <em>private</em>,
+          <em>ubiquitous</em>, and <em>interactive</em> explanations. Users can
+          edit the input text and see new predictions and explanations. The
+          model inference is real-time, and SHAP computation takes about 5
+          seconds for 50 tokens.
+      caption: >
+        The <em>text classifier explainer</em> applies WebSHAP to explain a
+        transformer-based toxicity detector in the browser. Users can click the
+        shuffle button to change a random input document. Users can also enter
+        their own sentences by typing in the text area. The transformer model
+        will give a new prediction on the current input text, and WebSHAP will
+        compute SHAP scores for each input token.
+
+development: >
+  WebSHAP is written in <a href='https://www.typescriptlang.org'
+  target='_blank' rel='noreferrer'>TypeScript</a>. The source code is available on
+  <a href='https://github.com/poloclub/webshap' target='_blank' rel='noreferrer'>GitHub</a>.
+  The entire app runs locally and privately in your web browser, and your model
+  and data would never leave your machine. Anyone can easily access WebSHAP
+  on their desktop or tablets, without the need of setting up dedicated servers or
+  writing code.
+
+team: >
+  WebSHAP is created by <a href='https://zijie.wang/' target='_blank'
+  rel='noreferrer'>Jay Wang</a> and <a href='https://www.cc.gatech.edu/~dchau'
+  target='_blank' rel='noreferrer'>Polo Chau</a> at Georgia Tech.
+
+contribute:
+  - >
+    If you have any questions or feedback, feel free to <a
+    href='https://github.com/poloclub/webshap/issues' target='_blank' rel='noreferrer'>open an
+    issue</a> or contact <a href='https://zijie.wang/' target='_blank' rel='noreferrer'>Jay
+    Wang</a>.
+  - >
+    We’d love to hear your experience with WebSHAP! If you’d like to share
+    (e.g., why do you use WebSHAP?), please reach out to us. WebSHAP is an open-source
+    project, and we welcome <a href='https://github.com/poloclub/webshap/pulls'
+    target='_blank' rel='noreferrer'>pull requests</a> for new feature
+    implementations and bug fixes, etc.
+
+
+cite:
+  intro: >
+    To learn more about WebSHAP, please read our <a
+    href='https://arxiv.org/abs/2303.09545' target='_blank' rel='noreferrer'>research paper</a>
+    (published at <a href='https://www2023.thewebconf.org'
+    target='_blank' rel='noreferrer'>TheWebConf'23</a>). If you find WebSHAP useful for your research,
+    please consider citing our paper. Thanks!
+  bibtex: >
+    @inproceedings{wangWebSHAPExplainingAny2023,
+      title = {{{WebSHAP}}: {{Towards Explaining Any Machine Learning Models Anywhere}}},
+      shorttitle = {{{WebSHAP}}},
+      booktitle = {Companion {{Proceedings}} of the {{Web Conference}} 2023},
+      author = {Wang, Zijie J. and Chau, Duen Horng},
+      year = {2023},
+      langid = {english}
+    }
+  title: >
+    WebSHAP: Towards Explaining Any Machine Learning Models Anywhere
+  paperLink: >
+    https://arxiv.org/abs/2303.09545
+  venue: >
+    Companion Proceedings of the Web Conference 2023
+  venueLink: >
+    https://www2023.thewebconf.org
+  authors:
+    - name: Zijie J. Wang
+      url: 'https://zijie.wang/'
+    - name: Duen Horng (Polo) Chau
+      url: 'https://www.cc.gatech.edu/~dchau'
