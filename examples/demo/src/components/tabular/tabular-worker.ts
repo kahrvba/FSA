@@ -10,7 +10,7 @@ import type {
   SHAPRow,
   TabularWorkerMessage
 } from '../../types/common-types';
-import { KernelSHAP } from '../../../../../src/index';
+import { KernelSHAP } from 'webshap';
 import { round, timeit, downloadJSON } from '../../utils/utils';
 import { getLatoTextWidth } from '../../utils/text-width';
 

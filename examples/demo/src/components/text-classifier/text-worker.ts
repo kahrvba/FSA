@@ -5,7 +5,7 @@ import type {
 } from '../../types/common-types';
 import { timeit, sleep } from '../../utils/utils';
 import { config } from '../../config/config';
-import { KernelSHAP } from '../../../../../src/index';
+import { KernelSHAP } from 'webshap';
 import { loadTokenizer } from './bert-tokenizer';
 import type { BertTokenizer } from './bert-tokenizer';
 

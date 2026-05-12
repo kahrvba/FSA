@@ -3,7 +3,7 @@ import type {
   ImageSegmentation,
   ImageWorkerMessage
 } from '../../types/common-types';
-import { KernelSHAP } from '../../../../../src/index';
+import { KernelSHAP } from 'webshap';
 import { timeit } from '../../utils/utils';
 import { fill, tensor3d, loadLayersModel, stack } from '@tensorflow/tfjs';
 import type { Tensor3D, LayersModel, Tensor, Rank } from '@tensorflow/tfjs';
