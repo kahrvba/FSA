@@ -93,6 +93,6 @@
     "tslib": "^2.5.0",
     "typescript": "^4.9.5",
     "vite": "^4.0.4",
-    "webshap": "link:../.."
+    "webshap": "^0.1.4"
   }
 }
